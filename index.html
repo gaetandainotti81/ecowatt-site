@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecowatt | Ingénieur Thermicien Agréé Wallonie</title>
+<meta name="description" content="Bureau technique dirigé par un ingénieur thermicien agréé. Certifications PEB, audits PAE, Responsable PEB et conseil en rénovation énergétique en Wallonie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f4ee;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --green-eco: #2d6a4f;
+    --accent: #1e3a5f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(12px);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 0.9rem; font-weight: 400; letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy) !important;
+    padding: 0.5rem 1.2rem; border-radius: 4px;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* ── HERO ────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, #0d2137 100%);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding-top: 70px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold); padding: 0.4rem 1rem; border-radius: 20px;
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--white); margin-bottom: 1.5rem;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-subtitle {
+    font-size: 1.1rem; line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 0.9rem 2rem; border-radius: 4px;
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; transition: all 0.2s;
+    border: 2px solid var(--gold);
+  }
+  .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    padding: 0.9rem 2rem; border-radius: 4px;
+    font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; transition: all 0.2s;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold);
+    display: block;
+  }
+  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.3rem; }
+
+  .hero-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px; padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  .hero-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--gold); margin-bottom: 1.5rem;
+  }
+  .credential-list { list-style: none; }
+  .credential-list li {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.4;
+  }
+  .credential-list li:last-child { border-bottom: none; }
+  .credential-list .check {
+    color: var(--gold); font-size: 1rem; margin-top: 0.1rem; flex-shrink: 0;
+  }
+
+  /* ── DIFFERENTIATOR ──────────────────────── */
+  .differentiator {
+    background: var(--cream);
+    padding: 5rem 2rem;
+  }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700; line-height: 1.2;
+    color: var(--navy); margin-bottom: 1.5rem;
+  }
+  .diff-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    margin-top: 3rem;
+  }
+  .diff-text p {
+    font-size: 1.05rem; line-height: 1.8; color: #374151;
+    margin-bottom: 1.2rem;
+  }
+  .diff-text strong { color: var(--navy); }
+  .vs-table { width: 100%; border-collapse: collapse; }
+  .vs-table th {
+    padding: 0.8rem 1rem; font-size: 0.85rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .vs-table th:first-child { text-align: left; }
+  .vs-table th:nth-child(2) { background: var(--navy); color: var(--gold); border-radius: 8px 8px 0 0; }
+  .vs-table th:nth-child(3) { color: var(--gray); }
+  .vs-table td {
+    padding: 0.75rem 1rem; font-size: 0.9rem; border-bottom: 1px solid #e5e7eb;
+  }
+  .vs-table td:nth-child(2) { background: rgba(10,22,40,0.04); text-align: center; font-weight: 500; }
+  .vs-table td:nth-child(3) { text-align: center; color: var(--gray); }
+  .check-g { color: #16a34a; }
+  .cross-r { color: #dc2626; }
+
+  /* ── SERVICES ────────────────────────────── */
+  .services { padding: 5rem 2rem; background: var(--white); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px; padding: 2rem;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.3s;
+  }
+  .service-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(10,22,40,0.1); transform: translateY(-2px); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 48px; height: 48px; background: var(--cream);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.2rem;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .service-tagline { font-size: 0.85rem; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+  .service-desc { font-size: 0.9rem; line-height: 1.7; color: #4b5563; margin-bottom: 1.5rem; }
+  .service-price {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem; border-top: 1px solid #f3f4f6;
+  }
+  .price-tag { font-size: 1rem; font-weight: 600; color: var(--navy); }
+  .price-duration { font-size: 0.8rem; color: var(--gray); }
+  .service-cta {
+    display: inline-block; margin-top: 1.2rem;
+    background: var(--navy); color: var(--white);
+    padding: 0.6rem 1.4rem; border-radius: 4px;
+    font-size: 0.85rem; font-weight: 500; text-decoration: none;
+    transition: background 0.2s; width: 100%; text-align: center;
+  }
+  .service-cta:hover { background: var(--gold); color: var(--navy); }
+
+  /* ── ABOUT ───────────────────────────────── */
+  .about { padding: 5rem 2rem; background: var(--navy); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center;
+  }
+  .about-photo-wrap { position: relative; }
+  .about-photo-placeholder {
+    background: linear-gradient(135deg, var(--navy-mid), var(--accent));
+    border: 2px solid rgba(201,168,76,0.3);
+    border-radius: 12px; aspect-ratio: 3/4;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4); font-size: 0.9rem; text-align: center; padding: 2rem;
+  }
+  .about-photo-placeholder .avatar { font-size: 4rem; margin-bottom: 1rem; }
+  .about-badge-wrap {
+    position: absolute; bottom: -1rem; right: -1rem;
+    background: var(--gold); color: var(--navy);
+    padding: 1rem 1.5rem; border-radius: 10px;
+    font-weight: 700; font-size: 0.85rem; text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .about .section-title { color: var(--white); }
+  .about .section-label { color: var(--gold); }
+  .about-text { color: rgba(255,255,255,0.8); font-size: 1rem; line-height: 1.8; margin-bottom: 1.2rem; }
+  .credentials-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
+  }
+  .cred-item {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px; padding: 1rem;
+  }
+  .cred-item-icon { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .cred-item-text { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
+
+  /* ── PROCESS ─────────────────────────────── */
+  .process { padding: 5rem 2rem; background: var(--cream); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    margin-top: 3rem; position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute; top: 2rem; left: 10%; right: 10%;
+    height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+    z-index: 0;
+  }
+  .step { text-align: center; position: relative; z-index: 1; }
+  .step-num {
+    width: 4rem; height: 4rem; background: var(--navy);
+    border: 2px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1.2rem;
+    color: var(--gold); margin: 0 auto 1rem;
+  }
+  .step-title { font-weight: 600; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
+
+  /* ── BLOG ────────────────────────────────── */
+  .blog { padding: 5rem 2rem; background: var(--white); }
+  .blog-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .blog-card {
+    border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;
+    transition: all 0.3s; text-decoration: none; color: inherit; display: block;
+  }
+  .blog-card:hover { box-shadow: 0 10px 40px rgba(10,22,40,0.1); transform: translateY(-3px); border-color: var(--gold); }
+  .blog-img {
+    width: 100%; height: 200px; object-fit: cover;
+    background: linear-gradient(135deg, var(--navy), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+  }
+  .blog-img img { width: 100%; height: 100%; object-fit: cover; }
+  .blog-body { padding: 1.5rem; }
+  .blog-meta { font-size: 0.75rem; color: var(--gold); font-weight: 500; margin-bottom: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .blog-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.8rem; line-height: 1.3; }
+  .blog-excerpt { font-size: 0.85rem; color: #6b7280; line-height: 1.6; }
+  .blog-read-more { display: inline-block; margin-top: 1rem; font-size: 0.85rem; font-weight: 500; color: var(--gold); }
+
+  /* ── CTA BAND ────────────────────────────── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--navy), var(--accent));
+    padding: 5rem 2rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a84c' fill-opacity='0.05'%3E%3Cpath d='M20 20.5V18H0v5h5v5H0v5h20v-2.5h-5V20.5H20zm-5-4.5v2.5h-5V18h5zM0 28.5V26H5v2.5H0zm10 0V26h5v2.5h-5z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .cta-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900;
+    color: var(--white); margin-bottom: 1rem; position: relative;
+  }
+  .cta-band p { font-size: 1.1rem; color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; position: relative; }
+  .cta-band .btn-primary { font-size: 1rem; padding: 1rem 2.5rem; }
+
+  /* ── CONTACT ─────────────────────────────── */
+  .contact { padding: 5rem 2rem; background: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-info p { font-size: 1rem; line-height: 1.8; color: #374151; margin-bottom: 2rem; }
+  .contact-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .contact-icon { font-size: 1.2rem; }
+  .contact-detail { font-size: 0.95rem; color: #374151; }
+  .contact-detail strong { display: block; color: var(--navy); margin-bottom: 0.2rem; }
+  form { display: flex; flex-direction: column; gap: 1rem; }
+  input, select, textarea {
+    padding: 0.8rem 1rem; border: 1px solid #d1d5db; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    background: var(--white); transition: border-color 0.2s;
+    width: 100%;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none; border-color: var(--gold);
+  }
+  textarea { min-height: 120px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    background: var(--navy); color: var(--white);
+    border: none; padding: 0.9rem; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--gold); color: var(--navy); }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.6);
+    padding: 3rem 2rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+    padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 1rem; }
+  .footer-brand span { color: var(--gold); }
+  .footer-desc { font-size: 0.85rem; line-height: 1.7; }
+  .footer-col h4 { color: var(--white); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1.5rem; font-size: 0.8rem;
+  }
+  .footer-agrément {
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.75rem;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-content, .diff-grid, .about-grid, .contact-grid, .footer-inner {
+      grid-template-columns: 1fr; gap: 2rem;
+    }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    .nav-links { display: none; }
+    .credentials-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ──────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content { animation: fadeUp 0.8s ease forwards; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Eco<span>watt</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">À Propos</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.ecowattpeb.com/book-online" target="_blank" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">✦ Agréé Région Wallonne</div>
+      <h1>Votre bien mérite une expertise d'<span>ingénieur</span>.</h1>
+      <p class="hero-subtitle">
+        Ecowatt est le seul bureau technique wallon dirigé par un ingénieur thermicien agréé — pas un simple technicien. Certifications PEB, audits PAE, Responsable PEB et conseil en rénovation.
+      </p>
+      <div class="hero-actions">
+        <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="btn-primary">Prendre rendez-vous</a>
+        <a href="#services" class="btn-secondary">Découvrir nos services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">160€</span>
+          <div class="stat-label">À partir de<br>Certificat PEB</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">48h</span>
+          <div class="stat-label">Délai de<br>livraison garanti</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <div class="stat-label">Agréé<br>Région Wallonne</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Pourquoi choisir Ecowatt ?</div>
+      <ul class="credential-list">
+        <li><span class="check">✦</span> Ingénieur thermicien des bâtiments — pas un technicien agréé</li>
+        <li><span class="check">✦</span> Ex-SPW TLPE — connaissance de la réglementation wallonne de l'intérieur</li>
+        <li><span class="check">✦</span> Certifications PEB résidentielles et bâtiments publics</li>
+        <li><span class="check">✦</span> Auditeur PAE agréé — accès aux primes PACE majorées</li>
+        <li><span class="check">✦</span> Responsable PEB pour chantiers et permis d'urbanisme</li>
+        <li><span class="check">✦</span> Conseil indépendant — aucun produit à vendre</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFÉRENCIATEUR -->
+<section class="differentiator">
+  <div class="section-inner">
+    <div class="section-label">Notre différence</div>
+    <h2 class="section-title">Ingénieur vs Technicien :<br>une différence qui compte</h2>
+    <div class="diff-grid">
+      <div class="diff-text">
+        <p>La plupart des certificateurs PEB sont des techniciens agréés qui remplissent les formulaires correctement. C'est suffisant pour une obligation légale.</p>
+        <p>Chez Ecowatt, vous êtes suivi par un <strong>ingénieur thermicien des bâtiments</strong> qui comprend la physique de votre bâtiment — ponts thermiques, inertie, comportement hygrothermique — et qui lit votre bien comme un ingénieur, pas comme un formulaire.</p>
+        <p>Cette différence se traduit concrètement : un certificat qui reflète la réalité la plus favorable, un audit qui identifie les vrais leviers, et un conseil qui vous évite des erreurs coûteuses.</p>
+        <a href="#contact" class="btn-primary" style="display:inline-block; margin-top:1rem;">Demander un devis</a>
+      </div>
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Ecowatt</th>
+            <th>Concurrent standard</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Formation</td>
+            <td><span class="check-g">✓</span> Ingénieur thermicien</td>
+            <td>Technicien agréé</td>
+          </tr>
+          <tr>
+            <td>Lecture physique du bâtiment</td>
+            <td><span class="check-g">✓</span> Complète</td>
+            <td><span class="cross-r">✗</span> Limitée</td>
+          </tr>
+          <tr>
+            <td>Conseil rénovation indépendant</td>
+            <td><span class="check-g">✓</span> Oui</td>
+            <td><span class="cross-r">✗</span> Non</td>
+          </tr>
+          <tr>
+            <td>Audit PAE complet</td>
+            <td><span class="check-g">✓</span> Oui</td>
+            <td>Selon profil</td>
+          </tr>
+          <tr>
+            <td>Responsable PEB</td>
+            <td><span class="check-g">✓</span> Oui</td>
+            <td><span class="cross-r">✗</span> Rarement</td>
+          </tr>
+          <tr>
+            <td>Expérience SPW</td>
+            <td><span class="check-g">✓</span> Ex-SPW TLPE</td>
+            <td><span class="cross-r">✗</span> Non</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-label">Nos prestations</div>
+    <h2 class="section-title">Des services techniques<br>à forte valeur ajoutée</h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <div class="service-name">Certificat PEB</div>
+        <div class="service-tagline">Réalisé par un ingénieur agréé Région wallonne</div>
+        <p class="service-desc">Le certificat PEB est obligatoire pour toute vente ou mise en location en Wallonie. Chez Ecowatt, ce n'est pas une formalité — c'est une analyse rigoureuse qui reflète la réalité la plus favorable de votre bien. Validité 10 ans, délai garanti.</p>
+        <div class="service-price">
+          <span class="price-tag">À partir de 160 €</span>
+          <span class="price-duration">Visite ~1h</span>
+        </div>
+        <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <div class="service-name">Audit PAE</div>
+        <div class="service-tagline">Accédez aux primes PACE majorées jusqu'à 70%</div>
+        <p class="service-desc">L'audit PAE va bien au-delà du certificat. Il analyse votre logement en profondeur et vous ouvre l'accès aux primes PACE majorées. Sur un projet de 20 000 €, la différence peut représenter 6 000 € de primes supplémentaires.</p>
+        <div class="service-price">
+          <span class="price-tag">À partir de 700 €</span>
+          <span class="price-duration">Visite ~2h</span>
+        </div>
+        <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <div class="service-name">Responsable PEB</div>
+        <div class="service-tagline">Conformité énergétique de votre chantier garantie</div>
+        <p class="service-desc">Obligatoire pour tout chantier soumis à permis d'urbanisme en Wallonie. Ecowatt assure le contrôle de conformité de la conception à la réception, avec la rigueur d'un ingénieur qui connaît la réglementation de l'intérieur.</p>
+        <div class="service-price">
+          <span class="price-tag">1 250 €</span>
+          <span class="price-duration">Mission complète</span>
+        </div>
+        <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <div class="service-name">Conseil en Rénovation</div>
+        <div class="service-tagline">Un plan d'action concret en 1 heure</div>
+        <p class="service-desc">Vous avez un projet de rénovation mais ne savez pas par où commencer ? Isolation, chauffage, ventilation, primes PACE — en 1 heure avec notre ingénieur, vous repartez avec un plan d'action clair, priorisé et chiffré. Conseil 100% indépendant.</p>
+        <div class="service-price">
+          <span class="price-tag">72 €</span>
+          <span class="price-duration">1 heure</span>
+        </div>
+        <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <div class="service-name">Consultation Efficacité Énergétique</div>
+        <div class="service-tagline">Identifiez où part votre énergie</div>
+        <p class="service-desc">Vos factures sont trop élevées ? Votre bien est classé E ou F ? Cette consultation ciblée identifie les pertes énergétiques prioritaires et vous indique les actions à fort impact — avec ou sans travaux lourds. Résultats concrets en 1 heure.</p>
+        <div class="service-price">
+          <span class="price-tag">72 €</span>
+          <span class="price-duration">1 heure</span>
+        </div>
+        <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <div class="about-photo-placeholder">
+          <div class="avatar">👷</div>
+          <p>Gaetan Dainotti<br><small>Ingénieur Thermicien</small></p>
+        </div>
+        <div class="about-badge-wrap">
+          Agréé<br>Région Wallonne
+        </div>
+      </div>
+      <div>
+        <div class="section-label">À propos</div>
+        <h2 class="section-title">Un ingénieur,<br>pas un technicien</h2>
+        <p class="about-text">Ecowatt n'est pas un bureau de certification de plus. C'est un bureau technique dirigé par Gaetan Dainotti, ingénieur thermicien des bâtiments agréé, auditeur énergétique entreprises et industries, et ancien collaborateur du SPW TLPE (Service Public de Wallonie).</p>
+        <p class="about-text">Cette expérience unique — côté terrain et côté administration — me permet de comprendre votre bâtiment comme un ingénieur, et de naviguer la réglementation wallonne comme un expert qui l'a vue construire de l'intérieur.</p>
+        <p class="about-text">Je me forme en permanence pour vous offrir le meilleur niveau d'expertise disponible en Wallonie.</p>
+        <div class="credentials-grid">
+          <div class="cred-item">
+            <div class="cred-item-icon">🎓</div>
+            <div class="cred-item-text">Ingénieur thermicien des bâtiments</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-icon">🏛️</div>
+            <div class="cred-item-text">Ex-SPW TLPE Wallonie</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-icon">📋</div>
+            <div class="cred-item-text">Certificateur PEB agréé CWAPE</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-icon">🔬</div>
+            <div class="cred-item-text">Auditeur PAE & Responsable PEB</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-icon">🏢</div>
+            <div class="cred-item-text">Auditeur entreprises & industries</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-icon">📈</div>
+            <div class="cred-item-text">Formation continue permanente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-label">Comment ça marche</div>
+    <h2 class="section-title">Un processus simple,<br>une expertise maximale</h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Prise de RDV en ligne</div>
+        <div class="step-desc">Choisissez votre service et un créneau qui vous convient via notre agenda en ligne.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Visite technique</div>
+        <div class="step-desc">Notre ingénieur se déplace chez vous pour une analyse rigoureuse et complète du bâtiment.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Rapport & certificat</div>
+        <div class="step-desc">Vous recevez vos documents officiels sous 48h avec nos recommandations personnalisées.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Suivi & conseil</div>
+        <div class="step-desc">Nous restons disponibles pour répondre à vos questions et vous accompagner dans vos démarches de primes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="section-inner">
+    <div class="section-label">Expertise & Conseils</div>
+    <h2 class="section-title">Le blog Ecowatt</h2>
+    <div class="blog-grid" id="blog-preview">
+      <!-- Articles chargés via JS -->
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="blog.html" class="btn-primary">Voir tous les articles</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div style="position:relative; max-width:700px; margin:0 auto;">
+    <h2>Prêt à valoriser votre bien ?</h2>
+    <p>Prenez rendez-vous en ligne en 2 minutes. Disponible 7j/7 pour toute la Wallonie.</p>
+    <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="btn-primary">Prendre rendez-vous maintenant</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Parlons de votre projet</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Vous avez un projet de vente, de rénovation ou de construction ? Une question sur votre certificat PEB ? Contactez-nous directement — un ingénieur vous répond, pas un standardiste.</p>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div class="contact-detail">
+            <strong>Téléphone</strong>
+            <a href="tel:+32483548560" style="color:#374151; text-decoration:none;">+32 483 548 560</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div class="contact-detail">
+            <strong>Email</strong>
+            <a href="mailto:info@ecowattpeb.be" style="color:#374151; text-decoration:none;">info@ecowattpeb.be</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div class="contact-detail">
+            <strong>Zone d'intervention</strong>
+            Toute la Région Wallonne, Belgique
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🏢</span>
+          <div class="contact-detail">
+            <strong>TVA</strong>
+            BE 0698.892.720
+          </div>
+        </div>
+      </div>
+      <form action="https://formspree.io/f/info@ecowattpeb.be" method="POST">
+        <div class="form-row">
+          <input type="text" name="nom" placeholder="Votre nom" required>
+          <input type="email" name="email" placeholder="Votre email" required>
+        </div>
+        <input type="tel" name="telephone" placeholder="Téléphone (optionnel)">
+        <select name="service">
+          <option value="">Quel service vous intéresse ?</option>
+          <option>Certificat PEB</option>
+          <option>Audit PAE</option>
+          <option>Responsable PEB</option>
+          <option>Conseil en Rénovation</option>
+          <option>Consultation Efficacité Énergétique</option>
+          <option>Autre question</option>
+        </select>
+        <textarea name="message" placeholder="Décrivez votre projet ou votre question..."></textarea>
+        <button type="submit" class="form-submit">Envoyer le message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Eco<span>watt</span></div>
+      <p class="footer-desc">Bureau technique dirigé par un ingénieur thermicien agréé. Certifications PEB, audits PAE, Responsable PEB et conseil en rénovation énergétique en Wallonie.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="https://www.ecowattpeb.com/booking-calendar/certificat-peb-1" target="_blank">Certificat PEB</a></li>
+        <li><a href="https://www.ecowattpeb.com/booking-calendar/audit-peb" target="_blank">Audit PAE</a></li>
+        <li><a href="https://www.ecowattpeb.com/booking-calendar/responsable-peb" target="_blank">Responsable PEB</a></li>
+        <li><a href="https://www.ecowattpeb.com/booking-calendar/conseil-en-rénovation-1-heure" target="_blank">Conseil Rénovation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#about">À Propos</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.ecowattpeb.com/book-online" target="_blank">Prendre RDV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Ecowatt SPRL — TVA BE 0698.892.720</span>
+    <span class="footer-agrément">Agréé Région Wallonne</span>
+  </div>
+</footer>
+
+<script>
+// Blog preview — 3 derniers articles
+const articles = [
+  {
+    title: "Vendre en Wallonie en 2026 : comment votre PEB peut vous faire perdre 15 000 € à la négociation",
+    excerpt: "Un mauvais score PEB est devenu le premier levier de négociation des acheteurs wallons. Voici comment un ingénieur thermicien peut vous aider à défendre votre prix.",
+    slug: "vendre-peb-negociation",
+    img: null,
+    emoji: "🏠",
+    date: "Avril 2026"
+  },
+  {
+    title: "Comprendre les indicateurs du certificat PEB : K, Ew, et consommation spécifique",
+    excerpt: "Ew, Espec, K, indicateur de surchauffe... Décryptage complet des indicateurs techniques de votre certificat PEB par notre ingénieur.",
+    slug: "indicateurs-peb-k-ew",
+    img: "https://static.wixstatic.com/media/551f32_8039bedbdc494098a7d7f332f5a815ba~mv2.png",
+    emoji: "📊",
+    date: "Février 2026"
+  },
+  {
+    title: "La hiérarchie de la rénovation : Pourquoi isoler le toit avant de changer de chaudière ?",
+    excerpt: "C'est l'erreur la plus coûteuse en rénovation énergétique. Notre ingénieur explique pourquoi l'ordre des travaux peut vous faire économiser des milliers d'euros.",
+    slug: "hierarchie-renovation-toit",
+    img: "https://static.wixstatic.com/media/551f32_7a5c455cd24d49ee8690d9aa6503ce66~mv2.png",
+    emoji: "🏗️",
+    date: "Février 2026"
+  }
+];
+
+const grid = document.getElementById('blog-preview');
+articles.forEach(a => {
+  const imgContent = a.img
+    ? `<div class="blog-img"><img src="${a.img}" alt="${a.title}" loading="lazy"></div>`
+    : `<div class="blog-img">${a.emoji}</div>`;
+  grid.innerHTML += `
+    <a href="blog.html#${a.slug}" class="blog-card">
+      ${imgContent}
+      <div class="blog-body">
+        <div class="blog-meta">${a.date} · Ecowatt</div>
+        <div class="blog-title">${a.title}</div>
+        <p class="blog-excerpt">${a.excerpt}</p>
+        <span class="blog-read-more">Lire l'article →</span>
+      </div>
+    </a>`;
+});
+</script>
+</body>
+</html>

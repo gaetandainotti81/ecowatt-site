@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Ecowatt — Expertise PEB & Rénovation Wallonie</title>
+<meta name="description" content="Articles d'expertise sur le PEB, l'audit énergétique, les primes PACE et la rénovation en Wallonie par un ingénieur thermicien.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628; --navy-mid: #112240; --gold: #c9a84c; --gold-light: #e8c97a;
+    --cream: #f8f4ee; --white: #ffffff; --gray: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--navy); }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,22,40,0.95); backdrop-filter: blur(12px);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between;
+    height: 70px; border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.5rem 1.2rem; border-radius: 4px; font-weight: 500 !important; }
+
+  .blog-hero {
+    padding: 140px 2rem 5rem;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    text-align: center;
+  }
+  .blog-hero .label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .blog-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: var(--white); margin-bottom: 1rem; }
+  .blog-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
+
+  .blog-main { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+
+  .blog-featured {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem;
+    margin-bottom: 4rem; align-items: center;
+    background: var(--cream); border-radius: 16px; overflow: hidden;
+  }
+  .featured-img {
+    height: 400px; background: linear-gradient(135deg, var(--navy), #1e3a5f);
+    display: flex; align-items: center; justify-content: center; font-size: 6rem;
+  }
+  .featured-img img { width: 100%; height: 100%; object-fit: cover; }
+  .featured-body { padding: 2.5rem; }
+  .featured-tag { background: var(--gold); color: var(--navy); padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; display: inline-block; margin-bottom: 1rem; }
+  .featured-body h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; line-height: 1.3; }
+  .featured-body p { font-size: 0.95rem; line-height: 1.7; color: #4b5563; margin-bottom: 1.5rem; }
+  .btn-read { background: var(--navy); color: var(--white); padding: 0.7rem 1.5rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background 0.2s; display: inline-block; }
+  .btn-read:hover { background: var(--gold); color: var(--navy); }
+
+  .blog-section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid var(--gold); display: inline-block; }
+  .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+
+  .article-card { border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; transition: all 0.3s; display: block; text-decoration: none; color: inherit; }
+  .article-card:hover { box-shadow: 0 10px 40px rgba(10,22,40,0.1); transform: translateY(-3px); border-color: var(--gold); }
+  .article-img { height: 200px; background: linear-gradient(135deg, var(--navy), #1e3a5f); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; overflow: hidden; }
+  .article-img img { width: 100%; height: 100%; object-fit: cover; }
+  .article-body { padding: 1.5rem; }
+  .article-meta { font-size: 0.75rem; color: var(--gold); font-weight: 500; margin-bottom: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .article-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.8rem; line-height: 1.3; }
+  .article-excerpt { font-size: 0.85rem; color: #6b7280; line-height: 1.6; }
+  .article-footer { padding: 1rem 1.5rem; background: #fafafa; border-top: 1px solid #f3f4f6; display: flex; justify-content: space-between; align-items: center; }
+  .read-time { font-size: 0.75rem; color: var(--gray); }
+  .read-link { font-size: 0.8rem; font-weight: 500; color: var(--gold); }
+
+  /* Modal article */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; overflow-y: auto; padding: 2rem; }
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+  .modal { background: var(--white); border-radius: 16px; max-width: 800px; width: 100%; margin: auto; overflow: hidden; }
+  .modal-header { padding: 2rem 2.5rem; background: var(--navy); }
+  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); line-height: 1.3; }
+  .modal-header .modal-meta { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.5rem; }
+  .modal-close { background: rgba(255,255,255,0.15); border: none; color: var(--white); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; float: right; margin-top: -0.5rem; }
+  .modal-body { padding: 2.5rem; font-size: 0.95rem; line-height: 1.8; color: #374151; }
+  .modal-body h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin: 2rem 0 1rem; }
+  .modal-body h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); margin: 1.5rem 0 0.8rem; }
+  .modal-body p { margin-bottom: 1rem; }
+  .modal-body ul, .modal-body ol { margin: 1rem 0 1rem 1.5rem; }
+  .modal-body li { margin-bottom: 0.5rem; }
+  .modal-body blockquote { border-left: 3px solid var(--gold); padding: 1rem 1.5rem; background: var(--cream); margin: 1.5rem 0; font-style: italic; color: var(--navy); }
+  .modal-body img { width: 100%; border-radius: 8px; margin: 1.5rem 0; }
+  .modal-cta { background: var(--cream); padding: 2rem 2.5rem; text-align: center; border-top: 1px solid #e5e7eb; }
+  .modal-cta p { margin-bottom: 1rem; font-weight: 500; color: var(--navy); }
+
+  .cta-band { background: linear-gradient(135deg, var(--navy), #1e3a5f); padding: 4rem 2rem; text-align: center; }
+  .cta-band h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); margin-bottom: 1rem; }
+  .cta-band p { color: rgba(255,255,255,0.75); margin-bottom: 2rem; }
+  .btn-gold { background: var(--gold); color: var(--navy); padding: 0.9rem 2rem; border-radius: 4px; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 2rem; text-align: center; font-size: 0.85rem; }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .blog-featured { grid-template-columns: 1fr; }
+    .featured-img { height: 250px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Eco<span>watt</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#about">À Propos</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="https://www.ecowattpeb.com/book-online" target="_blank" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+</nav>
+
+<div class="blog-hero">
+  <div class="label">Expertise & Conseils</div>
+  <h1>Le Blog Ecowatt</h1>
+  <p>Conseils pratiques sur le PEB, les primes PACE, la rénovation énergétique et la réglementation wallonne — par un ingénieur thermicien.</p>
+</div>
+
+<div class="blog-main">
+
+  <!-- Article vedette -->
+  <div class="blog-featured" id="vendre-peb-negociation">
+    <div class="featured-img">🏠</div>
+    <div class="featured-body">
+      <span class="featured-tag">À la une</span>
+      <h2>Vendre en Wallonie en 2026 : comment votre PEB peut vous faire perdre 15 000 € à la négociation</h2>
+      <p>Un mauvais score PEB est devenu le premier levier de négociation des acheteurs wallons. Sur une maison à 280 000 €, la différence entre un score C et E peut représenter 22 000 à 42 000 € de moins à la vente.</p>
+      <a href="#" class="btn-read" onclick="openModal('art0'); return false;">Lire l'article →</a>
+    </div>
+  </div>
+
+  <div style="margin-bottom:2rem;">
+    <span class="blog-section-title">Tous les articles</span>
+  </div>
+
+  <div class="articles-grid">
+
+    <a href="#" class="article-card" id="indicateurs-peb-k-ew" onclick="openModal('art1'); return false;">
+      <div class="article-img"><img src="https://static.wixstatic.com/media/551f32_8039bedbdc494098a7d7f332f5a815ba~mv2.png" alt="Indicateurs PEB" loading="lazy"></div>
+      <div class="article-body">
+        <div class="article-meta">Février 2026 · PEB</div>
+        <div class="article-title">Comprendre les indicateurs du certificat PEB : K, Ew, et consommation spécifique</div>
+        <p class="article-excerpt">Ew, Espec, K, indicateur de surchauffe... Décryptage complet des indicateurs techniques de votre certificat PEB par notre ingénieur.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">4 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="hierarchie-renovation-toit" onclick="openModal('art2'); return false;">
+      <div class="article-img"><img src="https://static.wixstatic.com/media/551f32_7a5c455cd24d49ee8690d9aa6503ce66~mv2.png" alt="Hiérarchie rénovation" loading="lazy"></div>
+      <div class="article-body">
+        <div class="article-meta">Février 2026 · Rénovation</div>
+        <div class="article-title">La hiérarchie de la rénovation : Pourquoi isoler le toit avant de changer de chaudière ?</div>
+        <p class="article-excerpt">C'est l'erreur la plus coûteuse en rénovation énergétique. Notre ingénieur explique pourquoi l'ordre des travaux peut vous faire économiser des milliers d'euros.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">4 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="peb-achat-immobilier" onclick="openModal('art3'); return false;">
+      <div class="article-img"><img src="https://static.wixstatic.com/media/551f32_5b9dcab94ec749bd8cf4526ebf54fe86~mv2.png" alt="PEB achat immobilier" loading="lazy"></div>
+      <div class="article-body">
+        <div class="article-meta">Février 2026 · Immobilier</div>
+        <div class="article-title">Pourquoi le certificat PEB est-il devenu l'élément le plus important lors d'un achat immobilier en 2026 ?</div>
+        <p class="article-excerpt">Le label énergétique est désormais plus scruté que la solidité de la charpente. Voici pourquoi ce changement est irréversible.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">4 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="mauvais-peb-renovation" onclick="openModal('art4'); return false;">
+      <div class="article-img"><img src="https://static.wixstatic.com/media/551f32_0256423b52c8411db42b87e58e36d7d5~mv2.png" alt="Mauvais PEB" loading="lazy"></div>
+      <div class="article-body">
+        <div class="article-meta">Janvier 2026 · Rénovation</div>
+        <div class="article-title">Mauvais PEB (score E/F/G) : par où commencer la rénovation, combien ça coûte et quelles primes sont disponibles ?</div>
+        <p class="article-excerpt">Analyse complète d'un logement classé E et plan de rénovation priorisé avec estimatifs budgétaires et primes applicables.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">7 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="pompe-chaleur" onclick="openModal('art5'); return false;">
+      <div class="article-img"><img src="https://static.wixstatic.com/media/551f32_cecd041ed66b45f49ac487ce560f0245~mv2.png" alt="Pompe à chaleur" loading="lazy"></div>
+      <div class="article-body">
+        <div class="article-meta">Janvier 2026 · Chauffage</div>
+        <div class="article-title">Pompe à chaleur : est-elle intéressante pour votre logement ?</div>
+        <p class="article-excerpt">La PAC émerge comme solution face à l'interdiction progressive des chaudières à mazout en Wallonie. Notre guide complet sur les aides, coûts et l'importance du facteur K.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">4 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="vmc-ventilation" onclick="openModal('art6'); return false;">
+      <div class="article-img"><img src="https://static.wixstatic.com/media/551f32_8face63925cc451fb262a4395d73458e~mv2.png" alt="VMC" loading="lazy"></div>
+      <div class="article-body">
+        <div class="article-meta">Janvier 2026 · Ventilation</div>
+        <div class="article-title">VMC : Ventilation Mécanique Contrôlée, laquelle choisir et pourquoi ?</div>
+        <p class="article-excerpt">Ventiler une habitation moderne est indispensable pour la santé et la durabilité du bâtiment. Guide complet par notre ingénieur thermicien.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">5 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="audit-logement-wallonie" onclick="openModal('art7'); return false;">
+      <div class="article-img">📋</div>
+      <div class="article-body">
+        <div class="article-meta">Décembre 2025 · Audit PAE</div>
+        <div class="article-title">Audit Logement en Wallonie : Votre Feuille de Route pour une Rénovation Réussie et Subsidiée</div>
+        <p class="article-excerpt">Si le certificat PEB est le bulletin de santé de votre maison, l'audit logement en est l'ordonnance complète. La clé pour débloquer les primes et éviter les erreurs coûteuses.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">9 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="guide-peb-wallonie" onclick="openModal('art8'); return false;">
+      <div class="article-img">📗</div>
+      <div class="article-body">
+        <div class="article-meta">Décembre 2025 · PEB</div>
+        <div class="article-title">PEB en Wallonie : Le Guide Complet pour Comprendre, Économiser et Rénover</div>
+        <p class="article-excerpt">Le certificat PEB est bien plus qu'une obligation légale. C'est votre boussole vers un logement plus confortable, plus économe et prêt pour l'avenir.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">6 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="pourquoi-auditeur-peb" onclick="openModal('art9'); return false;">
+      <div class="article-img">🔍</div>
+      <div class="article-body">
+        <div class="article-meta">Décembre 2025 · Audit</div>
+        <div class="article-title">Pourquoi choisir un auditeur PEB en Wallonie ?</div>
+        <p class="article-excerpt">L'audit PEB joue un rôle crucial dans la transition énergétique wallonne. Ce que vous gagnez à faire appel à un expert agréé pour votre rénovation.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">4 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="ameliorer-efficacite-peb" onclick="openModal('art10'); return false;">
+      <div class="article-img">⚡</div>
+      <div class="article-body">
+        <div class="article-meta">Décembre 2025 · Efficacité</div>
+        <div class="article-title">Améliorer l'efficacité énergétique avec un certificateur PEB</div>
+        <p class="article-excerpt">Comment un certificateur PEB peut vous aider à réduire vos factures et améliorer votre confort, bien au-delà de l'obligation légale.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">4 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+    <a href="#" class="article-card" id="conseils-renovation-eco" onclick="openModal('art11'); return false;">
+      <div class="article-img">🌱</div>
+      <div class="article-body">
+        <div class="article-meta">Décembre 2025 · Rénovation</div>
+        <div class="article-title">Conseils de rénovation pour une maison écoénergétique</div>
+        <p class="article-excerpt">Conseils pratiques pour transformer votre maison en un espace plus durable et efficace sur le plan énergétique, avec les aides disponibles en Wallonie.</p>
+      </div>
+      <div class="article-footer"><span class="read-time">4 min de lecture</span><span class="read-link">Lire →</span></div>
+    </a>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>Une question sur votre bien ?</h2>
+  <p>Prenez rendez-vous avec notre ingénieur thermicien pour un conseil personnalisé.</p>
+  <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="btn-gold">Prendre rendez-vous</a>
+</section>
+
+<footer>
+  <p>© 2026 <a href="index.html">Ecowatt SPRL</a> — Ingénieur thermicien agréé Région Wallonne — TVA BE 0698.892.720</p>
+</footer>
+
+<!-- MODALS articles -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modal-content">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h2 id="modal-title"></h2>
+      <div class="modal-meta" id="modal-meta"></div>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-cta">
+      <p>Besoin d'un conseil personnalisé pour votre bien ?</p>
+      <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="btn-gold">Prendre rendez-vous →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const articles = {
+  art0: {
+    title: "Vendre en Wallonie en 2026 : comment votre PEB peut vous faire perdre 15 000 € à la négociation",
+    meta: "Avril 2026 · 2 min de lecture",
+    body: `<p>Vous mettez votre maison en vente. Vous avez fait estimer le bien, rédigé l'annonce, pris des photos. Et puis vient la question redoutée : <em>"Quel est votre score PEB ?"</em></p>
+<p>En Wallonie en 2026, le certificat PEB est devenu bien plus qu'une formalité administrative. C'est le premier argument de négociation de tout acheteur informé. Un bien classé E ou F génère des offres systématiquement inférieures au prix demandé — parfois de 10 à 15% sur le prix final.</p>
+<h2>Le PEB comme outil de négociation : les chiffres</h2>
+<p>Sur une maison estimée à 280 000 €, la différence entre un score C et un score E peut représenter 22 000 à 42 000 € de moins à la vente. L'acheteur ne négocie pas à l'aveugle : il sort ses calculs — isolation à prévoir, nouvelle chaudière, remplacement des châssis — et présente une offre en conséquence.</p>
+<h2>Ce qu'un certificat PEB réalisé par un ingénieur change pour vous</h2>
+<p>Chez Ecowatt, le certificat n'est pas rempli machinalement. Chaque visite est réalisée par un ingénieur thermicien agréé qui connaît les méthodes de calcul dans le détail. Ce qui signifie que :</p>
+<ul>
+<li>Toutes les améliorations existantes sont correctement encodées (isolation partielle, double vitrage récent, vannes thermostatiques...)</li>
+<li>Le certificat reflète la réalité la plus favorable de votre bien dans les limites strictes de la méthode officielle</li>
+<li>Vous recevez une analyse des petits investissements à fort impact sur le score, à mettre en place avant la mise en vente</li>
+</ul>
+<h2>Faut-il rénover avant de vendre ?</h2>
+<p>Pas forcément. Mais certains investissements ciblés — isolation du comble perdu, remplacement du brûleur, pose de vannes thermostatiques — peuvent faire sauter d'une classe PEB avec un budget de 1 500 à 3 000 €. Ce même saut peut vous rapporter 10 à 20 fois ce montant sur la négociation finale.</p>
+<blockquote>Vous envisagez de vendre dans les 6 prochains mois ? Prenez rendez-vous pour un certificat PEB ou une consultation d'1 heure avec notre ingénieur thermicien. Vous repartirez avec une stratégie claire pour défendre votre prix.</blockquote>`
+  },
+  art1: {
+    title: "Comprendre les indicateurs du certificat PEB : K, Ew, et consommation spécifique expliqués simplement",
+    meta: "Février 2026 · 4 min de lecture",
+    body: `<img src="https://static.wixstatic.com/media/551f32_8039bedbdc494098a7d7f332f5a815ba~mv2.png" alt="Indicateurs PEB">
+<p>Lorsque vous recevez votre certificat PEB, la première chose que vous regardez est généralement la lettre colorée (de A++ à G). C'est normal : c'est l'indicateur le plus visuel. Cependant, si vous plongez dans les pages intérieures du rapport, vous tomberez sur une série de codes techniques : Ew, Espec, K, indicateur de surchauffe...</p>
+<p>Pour un propriétaire non-expert, ce jargon ressemble à une équation mathématique complexe. Pourtant, comprendre ces chiffres est essentiel pour savoir précisément où votre maison "pèche" et comment agir.</p>
+<h2>1. La Consommation Spécifique (Espec) : La consommation par m²</h2>
+<p>L'indicateur <strong>Espec</strong> est probablement le plus important pour votre portefeuille. Il s'exprime en <strong>kWh/m².an</strong>.</p>
+<ul>
+<li><strong>C'est quoi ?</strong> Imaginez la consommation de carburant d'une voiture (litres aux 100 km). Le Espec, c'est la même chose pour votre maison.</li>
+<li><strong>Pourquoi ça compte ?</strong> C'est cet indicateur qui détermine votre label (A, B, C...).</li>
+<li><strong>En 2026 :</strong> Un label A se situe généralement sous les 85 kWh/m².an, tandis qu'une passoire énergétique (Label G) dépasse souvent les 510 kWh/m².an.</li>
+</ul>
+<h2>2. Le Niveau Ew : La performance globale du bâtiment</h2>
+<p>Le <strong>Ew</strong> est un indicateur sans unité qui compare votre maison à une maison de référence.</p>
+<ul>
+<li><strong>L'impact des technologies :</strong> À isolation égale, une maison équipée d'une pompe à chaleur et de panneaux photovoltaïques aura un Ew beaucoup plus bas qu'une maison chauffée au gaz.</li>
+<li><strong>Le but :</strong> Plus le Ew est proche de zéro (voire négatif), plus votre maison tend vers l'autonomie énergétique.</li>
+</ul>
+<h2>3. Le Niveau K : La qualité de votre isolation globale</h2>
+<p>Si le Espec est le moteur, le <strong>Niveau K</strong> est la qualité de la carrosserie. Il mesure l'isolation thermique globale de l'enveloppe du bâtiment — murs, toit, sols et vitrages.</p>
+<p>Chez Ecowatt, nous recommandons toujours d'améliorer le K avant de s'attaquer au Ew.</p>
+<h2>4. L'Indicateur de Surchauffe : Le défi de demain</h2>
+<p>Avec le réchauffement climatique constaté en 2026, cet indicateur devient central. Une maison très bien isolée peut devenir une fournaise en été si elle possède de grandes baies vitrées au sud sans protections solaires.</p>
+<h2>Synthèse</h2>
+<table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+<tr style="background:var(--navy); color:white;"><th style="padding:0.6rem; text-align:left;">Indicateur</th><th style="padding:0.6rem;">Ce qu'il mesure</th><th style="padding:0.6rem;">Le conseil Ecowatt</th></tr>
+<tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:0.6rem;"><strong>Espec</strong></td><td style="padding:0.6rem; text-align:center;">Consommation au m²</td><td style="padding:0.6rem; text-align:center;">Priorité pour réduire vos factures</td></tr>
+<tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:0.6rem;"><strong>Ew</strong></td><td style="padding:0.6rem; text-align:center;">Impact écologique global</td><td style="padding:0.6rem; text-align:center;">Valoriser les énergies renouvelables</td></tr>
+<tr style="border-bottom:1px solid #e5e7eb;"><td style="padding:0.6rem;"><strong>Niveau K</strong></td><td style="padding:0.6rem; text-align:center;">Étanchéité thermique</td><td style="padding:0.6rem; text-align:center;">À améliorer en premier</td></tr>
+<tr><td style="padding:0.6rem;"><strong>Surchauffe</strong></td><td style="padding:0.6rem; text-align:center;">Confort en été</td><td style="padding:0.6rem; text-align:center;">Pensez protections solaires</td></tr>
+</table>`
+  },
+  art2: {
+    title: "La hiérarchie de la rénovation : Pourquoi isoler le toit avant de changer de chaudière ?",
+    meta: "Février 2026 · 4 min de lecture",
+    body: `<img src="https://static.wixstatic.com/media/551f32_7a5c455cd24d49ee8690d9aa6503ce66~mv2.png" alt="Rénovation toit">
+<p>C'est un scénario que nous rencontrons trop souvent chez Ecowatt : un propriétaire investit 15 000 € dans une pompe à chaleur de dernière génération. Pourtant, deux ans plus tard, les factures restent élevées. Le problème ? La maison est une "passoire" par le haut.</p>
+<p>En Wallonie, <strong>la règle d'or de la rénovation énergétique est simple mais souvent ignorée</strong> : on ne remplit pas un seau percé avant d'avoir bouché les trous.</p>
+<h2>1. La physique du bâtiment : La chaleur monte (toujours)</h2>
+<p>La répartition des pertes de chaleur dans une maison non isolée :</p>
+<ul>
+<li><strong>Toiture : 30 %</strong> (Le poste de déperdition n°1)</li>
+<li><strong>Murs : 25 %</strong></li>
+<li><strong>Vitres et parois vitrées : 15 %</strong></li>
+<li><strong>Sols et ponts thermiques : 15 %</strong></li>
+<li><strong>Renouvellement d'air (fuites) : 15 %</strong></li>
+</ul>
+<h2>2. Éviter le piège du surdimensionnement</h2>
+<p>Si vous changez votre chaudière avant d'isoler, votre chauffagiste calculera la puissance nécessaire pour une maison qui perd 30% de sa chaleur par le toit. Il installera une <strong>chaudière surdimensionnée</strong>. Une fois que vous isolerez le toit, elle fonctionnera par cycles courts incessants — réduisant sa durée de vie et augmentant la consommation.</p>
+<p><strong>La bonne démarche :</strong> Isolez d'abord. Puis installez un système de chauffage adapté à votre nouvelle enveloppe thermique.</p>
+<h2>3. L'impact spectaculaire sur votre certificat PEB</h2>
+<p>En passant d'une toiture sans isolation à 20-24 cm d'isolation, il n'est pas rare de voir une habitation <strong>sauter de deux classes énergétiques</strong> (de G à E, ou de E à C) par cette seule action.</p>
+<h2>4. La stratégie recommandée par Ecowatt</h2>
+<ol>
+<li><strong>Isolation de la toiture</strong> : Gain immédiat et massif.</li>
+<li><strong>Étanchéité à l'air</strong> : Boucher les courants d'air.</li>
+<li><strong>Vitrage et Châssis</strong> : Confort acoustique et thermique.</li>
+<li><strong>Isolation des murs</strong> : Investissement lourd mais très performant.</li>
+<li><strong>Système de chauffage</strong> : En dernier, pour couronner une enveloppe devenue performante.</li>
+</ol>
+<blockquote>Avant de consulter un chauffagiste, faites appel à Ecowatt. Nous analyserons l'épaisseur de votre isolant actuel et vous dirons précisément combien de centimètres ajouter pour transformer durablement votre confort et votre score énergétique.</blockquote>`
+  },
+  art3: {
+    title: "Pourquoi le certificat PEB est-il devenu l'élément le plus important lors d'un achat immobilier en 2026 ?",
+    meta: "Février 2026 · 4 min de lecture",
+    body: `<img src="https://static.wixstatic.com/media/551f32_5b9dcab94ec749bd8cf4526ebf54fe86~mv2.png" alt="PEB immobilier 2026">
+<p>Dans le paysage immobilier wallon de 2026, les critères de sélection des acheteurs ont radicalement muté. Aujourd'hui, une donnée a supplanté toutes les autres avant même le premier passage de la porte : <strong>l'indice PEB (Performance Énergétique des Bâtiments)</strong>.</p>
+<h2>1. L'évolution du cadre législatif : De l'information à l'obligation</h2>
+<p>En 2026, nous ne sommes plus dans une phase de sensibilisation, mais dans une phase de <strong>transition forcée</strong>. Les restrictions de mise en location pour les passoires énergétiques et les obligations de rénovation ont transformé le certificat PEB en une feuille de route contraignante.</p>
+<blockquote><strong>Note importante :</strong> En 2026, un mauvais PEB n'est plus une simple "opportunité de négociation", c'est une dette énergétique que l'acheteur doit provisionner dès le départ.</blockquote>
+<h2>2. Le concept de "Valeur Verte" : Le nouveau moteur du prix</h2>
+<p>Les statistiques récentes montrent qu'à caractéristiques égales, une maison affichant un label B peut se vendre jusqu'à <strong>15% à 25% plus cher</strong> qu'une maison de label G. L'acheteur intègre immédiatement le "coût total de possession" : Prix d'achat + Coût de la mise en conformité énergétique = Investissement réel.</p>
+<h2>3. Le rôle crucial du secteur bancaire et des crédits "verts"</h2>
+<p>Les banques proposent des taux d'intérêt préférentiels pour les logements affichant un bon score PEB. À l'inverse, obtenir un prêt pour une "passoire thermique" est devenu complexe. Le certificat PEB est donc l'outil de référence utilisé par l'expert bancaire pour valider le dossier.</p>
+<h2>4. L'explosion des coûts de l'énergie et la prévisibilité financière</h2>
+<ul>
+<li><strong>Prévisibilité :</strong> Le certificat PEB offre une estimation de la consommation théorique. Dans un monde où le prix du kWh peut fluctuer, habiter une maison de classe A offre une sécurité financière.</li>
+<li><strong>Indépendance :</strong> Un bon score PEB est souvent synonyme de pompe à chaleur et panneaux photovoltaïques — le premier pas vers l'autonomie énergétique.</li>
+</ul>
+<h2>Conclusion : Un changement de paradigme irréversible</h2>
+<p>Le certificat PEB est devenu la véritable "carte d'identité" du bâtiment. Il dicte le prix, influence le crédit, définit le confort et anticipe les travaux futurs. Dans la jungle immobilière actuelle, c'est votre boussole la plus fiable.</p>`
+  },
+  art4: {
+    title: "Mauvais PEB (score E/F/G) : par où commencer la rénovation ?",
+    meta: "Janvier 2026 · 7 min de lecture",
+    body: `<img src="https://static.wixstatic.com/media/551f32_0256423b52c8411db42b87e58e36d7d5~mv2.png" alt="Mauvais PEB">
+<p>Un certificat qui révèle un score E (412 kWh/m².an) est énergivore mais offre un énorme potentiel d'amélioration. La consommation théorique élevée est principalement due à l'absence quasi totale d'isolation.</p>
+<h2>Analyse des points faibles</h2>
+<ul>
+<li><strong>Toiture :</strong> Non isolée. C'est le point noir n°1 — la chaleur monte.</li>
+<li><strong>Murs :</strong> Grande surface de murs en briques non isolés. Déperdition massive.</li>
+<li><strong>Fenêtres :</strong> Simple vitrage ou double vitrage ancien peu performant.</li>
+<li><strong>Chauffage :</strong> Chaudière ancienne à faible rendement.</li>
+</ul>
+<h2>Plan de rénovation priorisé</h2>
+<ol>
+<li><strong>Isolation toiture (combles perdus)</strong> — Budget estimé : 4 000 – 8 000 €. Primes PACE : jusqu'à 70%. Gain PEB : 2 classes potentielles.</li>
+<li><strong>Remplacement fenêtres (double vitrage HR)</strong> — Budget : 8 000 – 15 000 €. Primes : jusqu'à 40%.</li>
+<li><strong>Isolation murs</strong> — Budget : 15 000 – 30 000 €. Primes : jusqu'à 60%.</li>
+<li><strong>Nouveau système de chauffage</strong> — Après isolation. Budget pompe à chaleur : 10 000 – 18 000 €. Primes : jusqu'à 50%.</li>
+</ol>
+<h2>L'importance de l'audit PAE avant de commencer</h2>
+<p>Sans audit PAE réalisé par un auditeur agréé, vous n'avez accès qu'aux primes de base. Avec un audit PAE validé, vous débloquez les primes majorées. Sur ce projet, la différence peut représenter 10 000 à 15 000 € de primes supplémentaires.</p>
+<blockquote>La première étape n'est pas les travaux. C'est l'audit PAE. Il coûte 700 à 900 € et peut vous faire économiser 5 à 10 fois cette somme sur vos primes. Contactez Ecowatt pour commencer.</blockquote>`
+  },
+  art5: {
+    title: "Pompe à chaleur : est-elle intéressante pour votre logement ?",
+    meta: "Janvier 2026 · 4 min de lecture",
+    body: `<img src="https://static.wixstatic.com/media/551f32_cecd041ed66b45f49ac487ce560f0245~mv2.png" alt="Pompe à chaleur">
+<p>La pompe à chaleur (PAC) émerge comme solution idéale face à l'interdiction progressive des chaudières à mazout en Wallonie, avec des subventions attractives et des économies potentielles de 40% sur les factures.</p>
+<h2>Interdiction Mazout Wallonie</h2>
+<p>Les nouvelles constructions ne peuvent plus installer de chaudières à mazout depuis mars 2025, et cette interdiction s'étend progressivement aux rénovations. La PAC devient donc incontournable pour beaucoup de propriétaires wallons.</p>
+<h2>La PAC est-elle faite pour votre maison ?</h2>
+<p>C'est ici que l'avis d'un ingénieur thermicien devient crucial. <strong>Une pompe à chaleur devient inefficace au-delà d'un facteur K de 45.</strong> Si votre maison n'est pas suffisamment isolée, la PAC travaillera à contrecœur et consommera plus qu'elle n'économise.</p>
+<p>La règle d'or : <strong>isoler d'abord, puis installer la PAC</strong>. Pas l'inverse.</p>
+<h2>Les primes disponibles en Wallonie</h2>
+<ul>
+<li>Prime PACE pour installation PAC : jusqu'à 50% du coût selon les revenus</li>
+<li>Prêt à taux 0% via Ecopack / Mur Pass pour les revenus modestes</li>
+<li>Réduction de TVA à 6% pour les bâtiments de plus de 10 ans</li>
+</ul>
+<h2>Notre conseil</h2>
+<p>Avant d'investir dans une PAC, faites réaliser un audit PAE par Ecowatt. Nous vous dirons exactement si votre maison est prête pour une PAC, et si non, quels travaux réaliser en premier pour maximiser votre retour sur investissement.</p>`
+  },
+  art6: {
+    title: "VMC : Ventilation Mécanique Contrôlée, laquelle choisir et pourquoi ?",
+    meta: "Janvier 2026 · 5 min de lecture",
+    body: `<img src="https://static.wixstatic.com/media/551f32_8face63925cc451fb262a4395d73458e~mv2.png" alt="VMC">
+<p>Ventiler une habitation moderne est indispensable pour la santé, le confort et la durabilité du bâtiment. Une VMC bien choisie et bien réglée devient un véritable "organe respiratoire" de la maison.</p>
+<h2>Pourquoi ventiler une maison moderne ?</h2>
+<p>Dans une maison bien isolée avec nouveaux châssis, l'air circule mal naturellement. Sans ventilation, l'humidité, le CO₂ et les polluants s'accumulent, ce qui favorise moisissures, inconfort, maux de tête et maladies respiratoires.</p>
+<h2>Les 3 systèmes principaux</h2>
+<ul>
+<li><strong>VMC Système A (naturelle) :</strong> La moins chère mais la moins efficace. Non recommandée dans les constructions récentes ou après isolation.</li>
+<li><strong>VMC Système C (extraction mécanique) :</strong> Bon compromis qualité/prix. Extrait l'air vicié des pièces humides (salle de bain, cuisine). Air neuf entre naturellement.</li>
+<li><strong>VMC Double Flux (Système D) :</strong> La référence pour les maisons basse énergie. Récupère jusqu'à 90% de la chaleur de l'air extrait pour chauffer l'air entrant. Plus coûteuse à l'installation mais économies importantes sur le chauffage.</li>
+</ul>
+<h2>Le lien avec le certificat PEB</h2>
+<p>Le type et la performance de votre système de ventilation impacte directement votre score PEB. Une VMC double flux bien dimensionnée peut faire gagner une classe énergétique.</p>
+<blockquote>Vous avez des doutes sur votre système de ventilation actuel ou souhaitez optimiser votre score PEB ? Notre ingénieur peut analyser votre situation lors d'une consultation de 1 heure (72 €).</blockquote>`
+  },
+  art7: {
+    title: "Audit Logement en Wallonie : Votre Feuille de Route pour une Rénovation Réussie et Subsidiée",
+    meta: "Décembre 2025 · 9 min de lecture",
+    body: `<p>Si le certificat PEB est le bulletin de santé de votre maison, l'audit logement en est l'ordonnance complète. Il identifie précisément les travaux à réaliser, dans quel ordre, et comment maximiser les primes disponibles.</p>
+<h2>Du constat à l'action</h2>
+<p>Vous savez que votre maison consomme trop. Mais par quoi commencer ? L'audit PAE (Procédure d'Avis Energétique) est la réponse à cette question. C'est un audit approfondi réalisé par un auditeur agréé qui analyse :</p>
+<ul>
+<li>L'enveloppe thermique (murs, toiture, sols, vitrages)</li>
+<li>Les systèmes de chauffage et de production d'eau chaude</li>
+<li>La ventilation et l'étanchéité à l'air</li>
+<li>Les éventuelles sources d'énergie renouvelable</li>
+</ul>
+<h2>Le rapport PAE : votre feuille de route</h2>
+<p>À l'issue de la visite, vous recevez un rapport détaillé qui :</p>
+<ol>
+<li>Identifie et priorise les travaux selon leur rapport coût/efficacité</li>
+<li>Estime le budget nécessaire pour chaque poste</li>
+<li>Calcule les primes PACE auxquelles vous avez droit</li>
+<li>Projette votre futur score PEB après travaux</li>
+</ol>
+<h2>Pourquoi l'audit PAE est indispensable avant les travaux</h2>
+<p>Sans audit PAE, vous ne pouvez accéder qu'aux primes de base. Avec un audit PAE validé, vous débloquez les primes majorées — jusqu'à 70% du coût des travaux pour les revenus modestes. L'audit se rembourse souvent plusieurs fois via les primes supplémentaires qu'il débloque.</p>
+<h2>Ecowatt : votre auditeur PAE agréé</h2>
+<p>Gaetan Dainotti est auditeur PAE agréé par la Région Wallonne. Avec son bagage d'ingénieur thermicien et son expérience au SPW, il vous garantit un audit complet, précis et orienté vers la maximisation de vos aides.</p>`
+  },
+  art8: {
+    title: "PEB en Wallonie : Le Guide Complet pour Comprendre, Économiser et Rénover",
+    meta: "Décembre 2025 · 6 min de lecture",
+    body: `<p>Le certificat de Performance Énergétique des Bâtiments (PEB) est bien plus qu'une obligation légale en Wallonie. C'est votre boussole vers un logement plus confortable, plus économe et prêt pour l'avenir.</p>
+<h2>Pourquoi tout le monde parle du PEB ?</h2>
+<p>Dans un contexte de hausse des prix de l'énergie et d'urgence climatique, le PEB est devenu l'indicateur de référence de la valeur immobilière. Il permet à l'acheteur, au locataire et à la banque d'évaluer la qualité énergétique d'un bien.</p>
+<h2>Comment est calculé le PEB ?</h2>
+<p>Le certificat PEB est calculé selon une méthode officielle imposée par la Région Wallonne. Il prend en compte :</p>
+<ul>
+<li>L'isolation de l'enveloppe (murs, toit, sol, vitrages)</li>
+<li>Les systèmes de chauffage et leur rendement</li>
+<li>La production d'eau chaude sanitaire</li>
+<li>La ventilation</li>
+<li>Les éventuelles sources d'énergie renouvelable</li>
+</ul>
+<h2>Les classes PEB en Wallonie</h2>
+<p>De A++ (moins de 0 kWh/m².an) à G (plus de 510 kWh/m².an), les 9 classes PEB permettent de situer votre bien. Depuis 2026, les banques conditionnent de plus en plus l'octroi de crédits avantageux à la classe énergétique du bien.</p>
+<h2>Ce que vous pouvez faire pour améliorer votre PEB</h2>
+<p>Les leviers les plus efficaces, dans l'ordre de priorité recommandé par Ecowatt :</p>
+<ol>
+<li>Isolation de la toiture</li>
+<li>Isolation des murs</li>
+<li>Remplacement des châssis et vitrages</li>
+<li>Système de ventilation performant</li>
+<li>Remplacement du système de chauffage (en dernier !)</li>
+</ol>
+<blockquote>Vous souhaitez comprendre votre certificat PEB actuel et identifier les travaux prioritaires ? Prenez rendez-vous pour une consultation d'1 heure avec notre ingénieur (72 €).</blockquote>`
+  },
+  art9: {
+    title: "Pourquoi choisir un auditeur PEB en Wallonie ?",
+    meta: "Décembre 2025 · 4 min de lecture",
+    body: `<p>La transition vers une économie plus verte est une priorité en Belgique. En Wallonie, l'audit PEB joue un rôle crucial dans cette démarche — mais tous les auditeurs ne se valent pas.</p>
+<h2>Les avantages d'un audit PEB professionnel</h2>
+<ul>
+<li><strong>Accès aux primes majorées :</strong> Un audit PAE réalisé par un auditeur agréé vous donne accès aux primes PACE les plus élevées.</li>
+<li><strong>Plan de rénovation priorisé :</strong> L'auditeur identifie les travaux les plus rentables selon votre situation.</li>
+<li><strong>Conformité réglementaire :</strong> Les rapports PAE sont reconnus par la Région Wallonne.</li>
+<li><strong>Valorisation du bien :</strong> Un bien rénové selon les recommandations d'un audit PAE voit sa valeur immobilière augmenter.</li>
+</ul>
+<h2>Pourquoi l'expertise d'un ingénieur fait la différence</h2>
+<p>Un technicien agréé suit une méthode. Un ingénieur thermicien comprend la physique du bâtiment — ponts thermiques, comportement hygrothermique, interaction entre les systèmes. Cette compréhension approfondie permet des recommandations plus précises et des économies plus importantes.</p>
+<h2>Ecowatt : l'expertise d'ingénieur au service de votre rénovation</h2>
+<p>Gaetan Dainotti, ingénieur thermicien et auditeur PAE agréé, apporte une expertise rare sur le marché wallon. Son expérience au SPW TLPE lui permet de comprendre les réglementations de l'intérieur et d'optimiser chaque dossier de primes.</p>`
+  },
+  art10: {
+    title: "Améliorer l'efficacité énergétique avec un certificateur PEB",
+    meta: "Décembre 2025 · 4 min de lecture",
+    body: `<p>L'efficacité énergétique est devenue un enjeu majeur. Faire appel à un certificateur PEB de qualité peut transformer une obligation légale en opportunité d'économies et de valorisation de votre patrimoine.</p>
+<h2>Au-delà de l'obligation légale</h2>
+<p>Le certificat PEB est souvent perçu comme une simple formalité. Mais entre les mains d'un ingénieur thermicien, c'est bien plus : c'est une radiographie complète de votre bien qui révèle ses points forts et ses failles énergétiques.</p>
+<h2>Les bénéfices concrets</h2>
+<ul>
+<li><strong>Réduction des factures :</strong> En comprenant où s'échappe l'énergie, vous pouvez cibler les investissements à fort retour.</li>
+<li><strong>Confort accru :</strong> Moins de courants d'air, températures plus homogènes, meilleure qualité de l'air.</li>
+<li><strong>Valorisation du bien :</strong> Un bon PEB se traduit directement en euros lors de la vente.</li>
+<li><strong>Anticipation réglementaire :</strong> La directive EPBD 2024 impose des classes minimales à la location d'ici 2033. Mieux vaut anticiper.</li>
+</ul>
+<h2>Comment Ecowatt va plus loin que la certification standard</h2>
+<p>Notre approche d'ingénieur nous permet d'encoder correctement toutes les améliorations existantes, d'identifier les quick wins (petits travaux à fort impact sur le score) et de vous fournir des conseils concrets pour améliorer votre label avant la mise en vente ou location.</p>`
+  },
+  art11: {
+    title: "Conseils de rénovation pour une maison écoénergétique",
+    meta: "Décembre 2025 · 4 min de lecture",
+    body: `<p>La rénovation d'une maison pour la rendre écoénergétique est un projet passionnant qui peut réduire votre empreinte carbone tout en diminuant vos factures d'énergie.</p>
+<h2>Pourquoi rénover pour l'écoénergie ?</h2>
+<p>La nécessité de rénover pour l'écoénergie est plus pressante que jamais. Les changements climatiques et l'augmentation des coûts de l'énergie rendent l'isolation et l'efficacité énergétique incontournables — tant pour votre portefeuille que pour la planète.</p>
+<h2>Les 5 piliers de la maison écoénergétique</h2>
+<ol>
+<li><strong>Une enveloppe performante :</strong> Isolation toiture, murs, sol + châssis triple vitrage. C'est la base.</li>
+<li><strong>Une ventilation contrôlée :</strong> VMC double flux pour une qualité d'air irréprochable sans gaspillage thermique.</li>
+<li><strong>Un chauffage renouvelable :</strong> Pompe à chaleur air/eau ou géothermique selon votre terrain.</li>
+<li><strong>De l'eau chaude solaire :</strong> Panneaux solaires thermiques pour couvrir 60-70% des besoins en eau chaude.</li>
+<li><strong>De l'électricité verte :</strong> Panneaux photovoltaïques couplés à une batterie de stockage.</li>
+</ol>
+<h2>Les primes disponibles en Wallonie</h2>
+<p>La Wallonie subventionne généreusement la transition énergétique via le programme PACE. Les taux de subvention varient de 20% à 70% selon vos revenus et le type de travaux. Un audit PAE préalable est souvent nécessaire pour accéder aux meilleures primes.</p>
+<h2>Par où commencer ?</h2>
+<p>Avant tout travaux, faites réaliser un audit PAE par Ecowatt. Nous vous fournirons une feuille de route personnalisée, priorisée et chiffrée — avec les primes applicables à votre situation exacte.</p>`
+  }
+};
+
+function openModal(id) {
+  const a = articles[id];
+  if (!a) return;
+  document.getElementById('modal-title').textContent = a.title;
+  document.getElementById('modal-meta').textContent = a.meta;
+  document.getElementById('modal-body').innerHTML = a.body;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
