@@ -317,7 +317,7 @@
               <div class="faq-a">Non. Un mauvais label (E, F ou G) n'empêche pas la vente ou la location, mais peut impacter le prix de négociation. Contactez-nous avant la mise en vente — nous vous conseillons sur les petits travaux à fort impact sur le score.</div>
             </div>
           </div>
-          <a href="https://www.ecowattpeb.com/booking-calendar/certificat-peb-1" target="_blank" class="service-cta">Réserver mon certificat PEB →</a>
+          <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver mon certificat PEB →</a>
         </div>
       </div>
 
@@ -352,7 +352,7 @@
               <div class="faq-a">Le rapport analyse l'enveloppe thermique, les systèmes de chauffage, la ventilation et les énergies renouvelables. Il inclut un plan de rénovation priorisé, des estimatifs budgétaires et le calcul des primes PACE applicables.</div>
             </div>
           </div>
-          <a href="https://www.ecowattpeb.com/booking-calendar/audit-peb" target="_blank" class="service-cta">Réserver mon audit PAE →</a>
+          <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver mon audit PAE →</a>
         </div>
       </div>
 
@@ -383,7 +383,7 @@
               <div class="faq-a">Le certificateur PEB évalue un bâtiment existant. Le Responsable PEB suit et contrôle un chantier en cours pour garantir que les exigences énergétiques du permis sont respectées tout au long de la construction.</div>
             </div>
           </div>
-          <a href="https://www.ecowattpeb.com/booking-calendar/responsable-peb" target="_blank" class="service-cta">Demander un devis →</a>
+          <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Demander un devis →</a>
         </div>
       </div>
 
@@ -414,7 +414,7 @@
               <div class="faq-a">Absolument. Avant d'acheter un bien avec un mauvais PEB, une consultation de 72 € peut vous faire économiser des milliers d'euros en évaluant le vrai coût de rénovation et les primes disponibles.</div>
             </div>
           </div>
-          <a href="https://www.ecowattpeb.com/booking-calendar/conseil-en-rénovation-1-heure" target="_blank" class="service-cta">Réserver ma consultation →</a>
+          <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver ma consultation →</a>
         </div>
       </div>
 
@@ -445,7 +445,7 @@
               <div class="faq-a">Non, mais si vous en avez un, apportez-le. Notre ingénieur peut analyser les indicateurs techniques (Espec, Ew, K) et vous expliquer précisément les leviers d'amélioration.</div>
             </div>
           </div>
-          <a href="https://www.ecowattpeb.com/booking-calendar/consultation-en-efficacité-énergétique" target="_blank" class="service-cta">Réserver ma consultation →</a>
+          <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="service-cta">Réserver ma consultation →</a>
         </div>
       </div>
 
@@ -599,9 +599,11 @@
           </a>
         </div>
       </div>
-      <form action="mailto:info@ecowattpeb.be" method="GET">
+      <form action="https://formspree.io/f/xdkonnvq" method="POST">
         <div class="form-row">
-          <input type="text" name="nom" placeholder="Votre nom" required>
+          <input type="hidden" name="_subject" value="Nouveau message - ecowattpeb.com">
+        <input type="hidden" name="_language" value="fr">
+        <input type="text" name="nom" placeholder="Votre nom" required>
           <input type="email" name="email" placeholder="Votre email" required>
         </div>
         <input type="tel" name="telephone" placeholder="Téléphone (optionnel)">
@@ -631,10 +633,10 @@
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
-        <li><a href="https://www.ecowattpeb.com/booking-calendar/certificat-peb-1" target="_blank">Certificat PEB</a></li>
-        <li><a href="https://www.ecowattpeb.com/booking-calendar/audit-peb" target="_blank">Audit PAE</a></li>
-        <li><a href="https://www.ecowattpeb.com/booking-calendar/responsable-peb" target="_blank">Responsable PEB</a></li>
-        <li><a href="https://www.ecowattpeb.com/booking-calendar/conseil-en-rénovation-1-heure" target="_blank">Conseil Rénovation</a></li>
+        <li><a href="https://www.ecowattpeb.com/book-online" target="_blank">Certificat PEB</a></li>
+        <li><a href="https://www.ecowattpeb.com/book-online" target="_blank">Audit PAE</a></li>
+        <li><a href="https://www.ecowattpeb.com/book-online" target="_blank">Responsable PEB</a></li>
+        <li><a href="https://www.ecowattpeb.com/book-online" target="_blank">Conseil Rénovation</a></li>
         <li><a href="https://www.ecowattpeb.com/book-online" target="_blank">Prendre RDV</a></li>
       </ul>
     </div>
@@ -659,6 +661,45 @@
 </footer>
 
 <script>
+// Formulaire de contact via Formspree
+document.getElementById("contact-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById("f-btn");
+  const nom = document.getElementById("f-nom").value;
+  const email = document.getElementById("f-email").value;
+  const tel = document.getElementById("f-tel").value;
+  const service = document.getElementById("f-service").value;
+  const message = document.getElementById("f-message").value;
+  
+  if (!nom || !email || !message) return;
+  
+  btn.textContent = "Envoi en cours...";
+  btn.disabled = true;
+  
+  try {
+    const res = await fetch("https://formspree.io/f/info@ecowattpeb.be", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({ nom, email, telephone: tel, service, message, _subject: "Nouveau message - ecowattpeb.com" })
+    });
+    
+    if (res.ok) {
+      document.getElementById("f-success").style.display = "block";
+      document.getElementById("contact-form").reset();
+    } else {
+      // Fallback: ouvrir mailto
+      window.location.href = `mailto:info@ecowattpeb.be?subject=Contact depuis ecowattpeb.com&body=Nom: ${nom}%0AEmail: ${email}%0ATel: ${tel}%0AService: ${service}%0A%0AMessage:%0A${message}`;
+    }
+  } catch(err) {
+    // Fallback mailto
+    window.location.href = `mailto:info@ecowattpeb.be?subject=Contact depuis ecowattpeb.com&body=Nom: ${nom}%0AEmail: ${email}%0ATel: ${tel}%0AService: ${service}%0A%0AMessage:%0A${message}`;
+  }
+  
+  btn.textContent = "Envoyer le message →";
+  btn.disabled = false;
+});
+
+// FAQ accordion
 function toggleFaq(el) {
   const item = el.parentElement;
   const isOpen = item.classList.contains("open");
