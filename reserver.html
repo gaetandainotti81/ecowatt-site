@@ -2,18 +2,51 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Réserver Certificat PEB - Ecowatt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réserver votre service - Ecowatt</title>
+    <!-- On importe les polices comme dans votre index -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- On injecte votre style CSS complet ici -->
     <style>
-        body { font-family: "DM Sans", sans-serif; background: #f8f4ee; text-align: center; padding: 50px 20px; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 40px; border-radius: 12px; }
-        h1 { font-family: "Playfair Display", serif; color: #0a1628; }
+        /* Copie conforme des variables et styles de votre site */
+        :root { --navy: #0a1628; --navy-mid: #112240; --gold: #c9a84c; --white: #ffffff; }
+        body { font-family: "DM Sans", sans-serif; background: #f8f4ee; padding-top: 70px; margin: 0; }
+        
+        /* Menu de navigation identique à l'index */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(10,22,40,0.97); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; border-bottom: 1px solid rgba(201,168,76,0.2); }
+        .nav-logo img { height: 48px; width: auto; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta { background: var(--gold) !important; color: var(--navy) !important; padding: 0.5rem 1.2rem !important; border-radius: 4px; font-weight: 600 !important; }
+
+        /* Conteneur de réservation */
+        .res-container { max-width: 900px; margin: 50px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        h1 { font-family: "Playfair Display", serif; color: var(--navy); margin-bottom: 20px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Réserver votre Certificat PEB</h1>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/ecowattpeb" style="min-width:320px;height:700px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    </div>
+
+<!-- Menu Navigation -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAuCAYAAABaG/ZDAAAAAXNSR0IArs4c6QAAAXxJREFUaEPtmUuOgzAMRkUId03s2K6K6LqJjW98w3Fh+8Z9w1Vw46K1tGvT/yI/2V+ZgG8eD746z35j1iP7rJv4W/3sBw7p3/b3J2f4jP0Kj93P7HlJ9e+77x+0FhI83Bv34OaC2z8BvPz7M92tG24jQ15A6MvF/h1p6/s64W4n36WnB47G3yD5D+yT9xP+9dK8t6pX1j8Vl7n1v8o59xZ1Y7/eJtZ8260J/Y3tqS0eY+f611t6+V1/3Vv7398z6+87v157+6Sg406qM16T9oV7lY+xTf5J/s59d435T0Z3X0Y7W3+J+kS4V3eF69j4h+c4F2F1+B807/p2F5P1Tf6yH4Wb/535J37T/e2XjB/O/u06b7Y/Q3b4h4/N8138OaN17D83/G2+Gv5M/3+2N5/hU3uY/V/ZJ7Q/b1v24/tY/oV3+T7+tS3aT5u/g0/n/R74B20zXy16o4fAAAAAAElFTkSuQmCC" alt="Ecowatt">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#about">À Propos</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="reserver.html" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+</nav>
+
+<div class="res-container">
+    <h1>Prendre rendez-vous</h1>
+    <!-- Widget Calendly -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/ecowattpeb" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</div>
+
 </body>
 </html>
