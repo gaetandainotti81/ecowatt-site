@@ -103,9 +103,21 @@
   @media (max-width: 768px) {
     .blog-featured { grid-template-columns: 1fr; }
     .featured-img { height: 250px; }
-    .nav-links { display: none; }
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 0.9rem; }
+    .nav-links li:not(.keep-mobile) { display: none; }
+    .nav-links li.nav-tel { display: list-item; }
   }
+  .nav-tel { display: none; }
 </style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CVFSG0YJPK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CVFSG0YJPK');
+</script>
 </head>
 <body>
 
@@ -113,10 +125,12 @@
   <a href="index.html" class="nav-logo">Eco<span>watt</span></a>
   <ul class="nav-links">
     <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#tarifs">Tarifs</a></li>
     <li><a href="index.html#about">À Propos</a></li>
     <li><a href="blog.html" class="active">Blog</a></li>
     <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="https://www.ecowattpeb.com/book-online" target="_blank" class="nav-cta">Prendre RDV</a></li>
+    <li class="keep-mobile nav-tel"><a href="tel:+32483548560" aria-label="Appeler Ecowatt">📞 Appeler</a></li>
+    <li class="keep-mobile"><a href="reserver.html" class="nav-cta">Prendre RDV</a></li>
   </ul>
 </nav>
 
@@ -262,7 +276,7 @@
 <section class="cta-band">
   <h2>Une question sur votre bien ?</h2>
   <p>Prenez rendez-vous avec notre ingénieur thermicien pour un conseil personnalisé.</p>
-  <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="btn-gold">Prendre rendez-vous</a>
+  <a href="reserver.html" class="btn-gold">Prendre rendez-vous</a>
 </section>
 
 <footer>
@@ -280,7 +294,7 @@
     <div class="modal-body" id="modal-body"></div>
     <div class="modal-cta">
       <p>Besoin d'un conseil personnalisé pour votre bien ?</p>
-      <a href="https://www.ecowattpeb.com/book-online" target="_blank" class="btn-gold">Prendre rendez-vous →</a>
+      <a href="reserver.html" class="btn-gold">Prendre rendez-vous →</a>
     </div>
   </div>
 </div>
