@@ -117,7 +117,15 @@
   @media (max-width: 768px) {
     .content-grid { grid-template-columns: 1fr; }
     .zones-grid { grid-template-columns: 1fr 1fr; }
-    nav .nav-links { display: none; }
+  }
+
+  .nav-tel { display: none; }
+  a:focus-visible, button:focus-visible, .faq-q:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; }
+    nav .nav-links { gap: 0.9rem; }
+    nav .nav-links li:not(.keep-mobile) { display: none; }
+    nav .nav-links li.nav-tel { display: list-item; }
   }
 </style>
 <!-- Google Analytics -->
@@ -137,10 +145,12 @@
   </a>
   <ul class="nav-links">
     <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#tarifs">Tarifs</a></li>
     <li><a href="index.html#about">À Propos</a></li>
     <li><a href="blog.html">Blog</a></li>
     <li><a href="index.html#contact">Contact</a></li>
-    <li><a href="https://booking.ecowattpeb.com/book-online" target="_blank" class="nav-cta">Prendre RDV</a></li>
+    <li class="keep-mobile nav-tel"><a href="tel:+32483548560" aria-label="Appeler Ecowatt">📞 Appeler</a></li>
+    <li class="keep-mobile"><a href="reserver.html?service=peb" class="nav-cta">Prendre RDV</a></li>
   </ul>
 </nav>
 
@@ -158,7 +168,7 @@
       <span class="hero-badge">✦ Délai 48h garanti</span>
       <span class="hero-badge">✦ Intervention sur Morlanwelz</span>
     </div>
-    <a href="https://booking.ecowattpeb.com/book-online" target="_blank" class="btn-gold">Réserver mon certificat PEB à Morlanwelz →</a>
+    <a href="reserver.html?service=peb" class="btn-gold">Réserver mon certificat PEB à Morlanwelz →</a>
   </div>
 </section>
 
@@ -172,7 +182,7 @@
         <p>Le parc immobilier de Morlanwelz est typique du Centre wallon : maisons mitoyennes de l'époque industrielle, villas des années 60-80, et quelques constructions récentes. Les biens anciens non rénovés y obtiennent fréquemment des labels E ou F.</p>
         <p>Chez Ecowatt, chaque certificat PEB est réalisé par un <strong>ingénieur thermicien agréé par la Région wallonne</strong>. Contrairement aux techniciens qui remplissent un formulaire, notre ingénieur comprend la physique du bâtiment et optimise chaque paramètre dans les limites strictes de la méthode officielle.</p>
         <p>Résultat : un certificat qui reflète la réalité la plus favorable de votre bien, livré sous 48 heures avec un rapport clair et des recommandations personnalisées.</p>
-        <a href="https://booking.ecowattpeb.com/book-online" target="_blank" class="btn-gold" style="margin-top:1rem;">Prendre rendez-vous →</a>
+        <a href="reserver.html?service=peb" class="btn-gold" style="margin-top:1rem;">Prendre rendez-vous →</a>
       </div>
       <div>
         <div class="info-card">
@@ -219,7 +229,7 @@
         <div class="service-icon">🔍</div>
         <h3>Audit PAE</h3>
         <p>Débloquez les primes PACE majorées jusqu'à 70% des travaux de rénovation.</p>
-        <div class="service-price">À partir de 700 €</div>
+        <div class="service-price">À partir de 900 €</div>
       </div>
       <div class="service-item">
         <div class="service-icon">🔧</div>
@@ -261,7 +271,7 @@
 <section class="cta-local">
   <h2>Besoin d'un certificat PEB à Morlanwelz ?</h2>
   <p>Prenez rendez-vous en ligne en 2 minutes. Notre ingénieur se déplace chez vous.</p>
-  <a href="https://booking.ecowattpeb.com/book-online" target="_blank" class="btn-gold" style="font-size:1rem; padding:1rem 2.5rem;">Réserver mon certificat PEB →</a>
+  <a href="reserver.html?service=peb" class="btn-gold" style="font-size:1rem; padding:1rem 2.5rem;">Réserver mon certificat PEB →</a>
   <div style="margin-top:1.5rem; color:rgba(255,255,255,0.5); font-size:0.85rem;">
     📞 <a href="tel:+32483548560" style="color:var(--gold);">+32 483 548 560</a> &nbsp;|&nbsp; 
     ✉️ <a href="mailto:info@ecowattpeb.be" style="color:var(--gold);">info@ecowattpeb.be</a>

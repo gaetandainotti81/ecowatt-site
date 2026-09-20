@@ -79,6 +79,39 @@
   .widget-fallback { padding: 1.6rem; font-size: 0.95rem; line-height: 1.7; color: #374151; }
   .widget-fallback a { color: var(--accent); font-weight: 500; }
 
+
+  [hidden] { display: none !important; }
+  #pick, #booking { margin-top: 2rem; }
+
+  /* Choix de la prestation (page sans service précisé) */
+  a.svc { text-decoration: none; color: inherit; }
+  a.svc .svc-body { display: block; }
+  a.svc:hover .svc-body { border-color: var(--gold); }
+  a.svc:focus-visible .svc-body { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* Page dédiée à une prestation */
+  .back { margin-top: 1.2rem; font-size: 0.9rem; }
+  .back a { color: var(--accent); }
+  .q { padding: 1.4rem 1.6rem; border-bottom: 1px solid #eee; }
+  .q fieldset { border: 0; padding: 0; min-width: 0; }
+  .q legend { font-family: "Playfair Display", serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; padding: 0; }
+  .q h4 { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin: 1.1rem 0 0.6rem; font-weight: 600; }
+  .q h4:first-of-type { margin-top: 0; }
+  .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.7rem; }
+  .opt { position: relative; display: block; cursor: pointer; }
+  .opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .opt span { display: flex; align-items: center; gap: 0.75rem; padding: 0.85rem 1rem; border: 1.5px solid #d1d5db; border-radius: 8px; background: var(--white); font-size: 0.95rem; transition: border-color 0.2s, background 0.2s; }
+  .opt span::before { content: ""; flex-shrink: 0; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid #9ca3af; background: var(--white); }
+  .opt:hover span { border-color: var(--gold); }
+  .opt input:focus-visible + span { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .opt input:checked + span { background: var(--navy); border-color: var(--navy); color: var(--white); }
+  .opt input:checked + span::before { border-color: var(--gold); background: radial-gradient(var(--gold) 0 45%, var(--navy) 50%); }
+  .price-box { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; padding: 1.2rem 1.6rem; background: var(--cream); border-bottom: 1px solid #eee; }
+  .price-box .pb-label { font-size: 0.85rem; color: var(--gray); }
+  .price-box strong { font-family: "Playfair Display", serif; font-size: 1.9rem; color: var(--accent); line-height: 1; }
+  .price-box .pb-sub { font-size: 0.92rem; color: #374151; }
+  .slot-title { padding: 1.2rem 1.6rem 0; font-family: "Playfair Display", serif; font-size: 1.15rem; font-weight: 700; }
+
   /* AIDE */
   .help { margin-top: 2.4rem; display: flex; gap: 1.2rem 2.5rem; flex-wrap: wrap; align-items: center; justify-content: space-between; background: var(--navy); color: rgba(255,255,255,0.8); border-radius: 12px; padding: 1.4rem 1.6rem; font-size: 0.93rem; line-height: 1.6; }
   .help strong { color: var(--white); display: block; font-size: 1rem; }
@@ -124,39 +157,26 @@
 
 <main class="book">
   <header class="book-head">
-    <h1>Prendre rendez-vous</h1>
-    <p>Choisissez votre prestation, puis un créneau dans l'agenda de l'ingénieur. Vous recevez la confirmation par e-mail.</p>
+    <h1 id="h1">Prendre rendez-vous</h1>
+    <p id="lede">Quelle prestation souhaitez-vous réserver ? Vous accédez ensuite à l'agenda de cette prestation, et à elle seule.</p>
   </header>
 
-  <section class="step" aria-labelledby="t1">
-    <h2 class="step-title" id="t1"><span class="step-n" aria-hidden="true">1</span>Votre prestation</h2>
-    <fieldset class="svc-grid" id="svc-grid">
-      <legend class="sr-only" style="position:absolute;left:-9999px">Prestation souhaitée</legend>
-
-      <label class="svc"><input type="radio" name="service" value="peb">
-        <span class="svc-body"><span class="svc-name">Certificat PEB</span><span class="svc-price">dès 160 €</span><span class="svc-meta">Visite d'environ 1 heure. Certificat officiel sous 48 h.</span></span></label>
-
-      <label class="svc"><input type="radio" name="service" value="pae">
-        <span class="svc-body"><span class="svc-name">Audit PAE</span><span class="svc-price">dès 700 €</span><span class="svc-meta">Visite d'environ 2 heures. Rapport complet et plan de rénovation.</span></span></label>
-
-      <label class="svc"><input type="radio" name="service" value="conseil">
-        <span class="svc-body"><span class="svc-name">Conseil en rénovation</span><span class="svc-price">72 € / heure</span><span class="svc-meta">Sur place ou à distance. Plan d'action priorisé et chiffré.</span></span></label>
-
-      <label class="svc"><input type="radio" name="service" value="efficacite">
-        <span class="svc-body"><span class="svc-name">Consultation efficacité énergétique</span><span class="svc-price">72 € / heure</span><span class="svc-meta">Sur place ou à distance. Où part votre énergie, et quoi faire en premier.</span></span></label>
-
-      <label class="svc"><input type="radio" name="service" value="responsable">
-        <span class="svc-body"><span class="svc-name">Responsable PEB</span><span class="svc-price">1 250 €</span><span class="svc-meta">Chantier soumis à permis d'urbanisme. Sur devis, sans agenda en ligne.</span></span></label>
-    </fieldset>
-  </section>
-
-  <section class="step" aria-labelledby="t2">
-    <h2 class="step-title" id="t2"><span class="step-n" aria-hidden="true">2</span>Votre créneau</h2>
-    <div class="panel" id="panel" aria-live="polite">
-      <p class="panel-empty">Sélectionnez une prestation ci-dessus pour afficher les créneaux disponibles.</p>
+  <section id="pick" aria-label="Choix de la prestation">
+    <div class="svc-grid">
+      <a class="svc" href="reserver.html?service=peb"><span class="svc-body"><span class="svc-name">Certificat PEB</span><span class="svc-price">de 160 € à 450 €</span><span class="svc-meta">Selon le type de logement et sa surface. Visite d'environ 1 heure, certificat sous 48 h.</span></span></a>
+      <a class="svc" href="reserver.html?service=pae"><span class="svc-body"><span class="svc-name">Audit PAE</span><span class="svc-price">de 900 € à 1 100 €</span><span class="svc-meta">Selon le logement et sa surface. Visite d'environ 2 heures, rapport complet et plan de rénovation.</span></span></a>
+      <a class="svc" href="reserver.html?service=conseil"><span class="svc-body"><span class="svc-name">Conseil en rénovation</span><span class="svc-price">72 € / heure</span><span class="svc-meta">Sur place ou à distance. Plan d'action priorisé et chiffré.</span></span></a>
+      <a class="svc" href="reserver.html?service=efficacite"><span class="svc-body"><span class="svc-name">Consultation efficacité énergétique</span><span class="svc-price">72 € / heure</span><span class="svc-meta">Sur place ou à distance. Où part votre énergie, et quoi faire en premier.</span></span></a>
+      <a class="svc" href="reserver.html?service=responsable"><span class="svc-body"><span class="svc-name">Responsable PEB</span><span class="svc-price">1 250 €</span><span class="svc-meta">Chantier soumis à permis d'urbanisme. Sur devis, sans agenda en ligne.</span></span></a>
     </div>
-    <noscript><p style="margin-top:1rem">JavaScript est nécessaire pour afficher l'agenda. Appelez le <a href="tel:+32483548560">+32 483 548 560</a> ou écrivez à <a href="mailto:info@ecowattpeb.be">info@ecowattpeb.be</a>.</p></noscript>
   </section>
+
+  <section id="booking" hidden aria-label="Réservation">
+    <div class="panel" id="panel" aria-live="polite"></div>
+    <p class="back"><a href="reserver.html">← Réserver une autre prestation</a></p>
+  </section>
+
+  <noscript><p style="margin-top:1rem">JavaScript est nécessaire pour afficher l'agenda. Appelez le <a href="tel:+32483548560">+32 483 548 560</a> ou écrivez à <a href="mailto:info@ecowattpeb.be">info@ecowattpeb.be</a>.</p></noscript>
 
   <aside class="help">
     <div><strong>Aucun créneau ne convient ?</strong>Dites-nous ce qui vous arrange, nous trouvons une solution.</div>
@@ -168,54 +188,66 @@
 
 <script>
 /* ============================================================
-   CONFIGURATION DE LA RÉSERVATION
-   Pour changer d'outil d'agenda (Cal.com, Koalendar, etc.),
-   il suffit de modifier PROVIDER et les URL ci-dessous :
-   - "calendly" : widget Calendly (URL d'une page de réservation)
-   - "iframe"   : n'importe quel agenda qui fournit une URL intégrable
-   Astuce : un type d'événement par prestation, chacun avec sa durée,
-   donne à chaque service son propre agenda (ex. .../certificat-peb).
+   RÉSERVATION : une page dédiée par prestation (reserver.html?service=...)
+   Pour changer d'outil d'agenda (Cal.com, Koalendar, etc.), modifiez
+   PROVIDER ("calendly" ou "iframe") et les adresses ci-dessous.
    ============================================================ */
 var PROVIDER = "calendly";
-var AGENDA = "https://calendly.com/ecowattpeb";
-
-/* --- Certificat PEB : un type d'événement Calendly par type de bien et surface ---
-   Attention : les adresses Calendly ci-dessous ne correspondent pas toujours aux noms
-   (ex. le lien "…76-125m-240-clone" ouvre en réalité le type "appartement 126-200 m² à 280 €").
-   Les associations ci-dessous ont été vérifiées avec les noms des types dans Calendly. */
 var CAL = "https://calendly.com/ecowattpeb/";
+
+/* Certificat PEB : un type d'événement Calendly par type de logement et surface.
+   Attention : certaines adresses ne correspondent pas aux noms (ex. le lien
+   "…76-125m-240-clone" ouvre en réalité le type "appartement 126-200 m² à 280 €").
+   Les associations ci-dessous ont été vérifiées avec les noms des types dans Calendly. */
 var PEB_TIERS = [
-  { id: "studio-50",   group: "Studio et appartement", label: "Studio, jusqu'à 50 m²",     price: "160 €", url: CAL + "certifpebstudio" },
-  { id: "app-51-75",   group: "Studio et appartement", label: "Appartement de 51 à 75 m²",  price: "200 €", url: CAL + "30min" },
-  { id: "app-76-125",  group: "Studio et appartement", label: "Appartement de 76 à 125 m²", price: "240 €", url: CAL + "certificat-peb-studio-50m-160-clone" },
-  { id: "app-126-200", group: "Studio et appartement", label: "Appartement de 126 à 200 m²", price: "280 €", url: CAL + "certificat-peb-appartement-76-125m-240-clone" },
-  { id: "mai-150",     group: "Maison",                label: "Maison jusqu'à 150 m²",      price: "300 €", url: CAL + "certificat-peb-appartement-126-200m-280-clone" },
-  { id: "mai-151-250", group: "Maison",                label: "Maison de 151 à 250 m²",     price: "340 €", url: CAL + "certificat-peb-maison-150m-300-clone" },
-  { id: "mai-251-350", group: "Maison",                label: "Maison de 251 à 350 m²",     price: "400 €", url: CAL + "certificat-peb-maison-151-250m-340-clone" },
-  { id: "mai-350",     group: "Maison",                label: "Maison de plus de 350 m²",   price: "450 €", url: CAL + "certificat-peb-maison-251-350m-400-clone" }
+  { id: "studio-50",   group: "Studio et appartement", label: "Studio, jusqu'à 50 m²",       price: "160 €", url: CAL + "certifpebstudio" },
+  { id: "app-51-75",   group: "Studio et appartement", label: "Appartement de 51 à 75 m²",    price: "200 €", url: CAL + "30min" },
+  { id: "app-76-125",  group: "Studio et appartement", label: "Appartement de 76 à 125 m²",   price: "240 €", url: CAL + "certificat-peb-studio-50m-160-clone" },
+  { id: "app-126-200", group: "Studio et appartement", label: "Appartement de 126 à 200 m²",  price: "280 €", url: CAL + "certificat-peb-appartement-76-125m-240-clone" },
+  { id: "mai-150",     group: "Maison",                label: "Maison jusqu'à 150 m²",        price: "300 €", url: CAL + "certificat-peb-appartement-126-200m-280-clone" },
+  { id: "mai-151-250", group: "Maison",                label: "Maison de 151 à 250 m²",       price: "340 €", url: CAL + "certificat-peb-maison-150m-300-clone" },
+  { id: "mai-251-350", group: "Maison",                label: "Maison de 251 à 350 m²",       price: "400 €", url: CAL + "certificat-peb-maison-151-250m-340-clone" },
+  { id: "mai-350",     group: "Maison",                label: "Maison de plus de 350 m²",     price: "450 €", url: CAL + "certificat-peb-maison-251-350m-400-clone" }
 ];
 
-/* Autres prestations : une adresse Calendly par prestation.
-   Si "url" est vide, la page propose de nous contacter à la place. */
+/* Audit PAE : même grille de logements que le certificat PEB, tarifs corrélés (900 € à 1 100 €).
+   Comme pour le PEB, certaines adresses contiennent d'anciens prix (ex. "…-2000" ouvre le type à 900 €) :
+   les associations ci-dessous ont été vérifiées avec les noms des types dans Calendly. */
+var PAE_TIERS = [
+  { id: "studio-50",   group: "Studio et appartement", label: "Studio, jusqu'à 50 m²",       price: "900 €", url: CAL + "audit-pae-a-partir-de-700" },
+  { id: "app-51-75",   group: "Studio et appartement", label: "Appartement de 51 à 75 m²",    price: "925 €", url: CAL + "audit-pae-appartement-51-75m-900" },
+  { id: "app-76-125",  group: "Studio et appartement", label: "Appartement de 76 à 125 m²",   price: "950 €", url: CAL + "audit-pae-appartement-76-125m-1050" },
+  { id: "app-126-200", group: "Studio et appartement", label: "Appartement de 126 à 200 m²",  price: "975 €", url: CAL + "audit-pae-appartement-126-200m-1250" },
+  { id: "mai-150",     group: "Maison",                label: "Maison jusqu'à 150 m²",        price: "1000 €", url: CAL + "audit-pae-maison-150m-1300" },
+  { id: "mai-151-250", group: "Maison",                label: "Maison de 151 à 250 m²",       price: "1025 €", url: CAL + "audit-pae-maison-151-250m-1500" },
+  { id: "mai-251-350", group: "Maison",                label: "Maison de 251 à 350 m²",       price: "1075 €", url: CAL + "audit-pae-maison-251-350m-1750" },
+  { id: "mai-350",     group: "Maison",                label: "Maison de plus de 350 m²",     price: "1100 €", url: CAL + "audit-pae-maison-350m-2000" }
+];
+
 var SERVICES = {
   peb: {
-    label: "Certificat PEB", price: "de 160 € à 450 € selon le bien", tiers: PEB_TIERS,
+    label: "Certificat PEB", h1: "Réservez votre certificat PEB", tiers: PEB_TIERS,
+    lede: "Répondez à une question : votre tarif s'affiche et vous choisissez votre créneau.",
     note: "Prévoyez l'accès à toutes les pièces (cave, grenier, chaufferie), vos factures d'énergie récentes et, si possible, les documents des travaux réalisés."
   },
   pae: {
-    label: "Audit PAE", price: "à partir de 700 €", url: CAL + "audit-pae-a-partir-de-700",
+    label: "Audit PAE", h1: "Réservez votre audit PAE", tiers: PAE_TIERS,
+    lede: "Répondez à une question : votre tarif s'affiche et vous choisissez votre créneau.",
     note: "Le rapport contient un plan de rénovation priorisé, des estimatifs budgétaires et le calcul des primes PACE applicables."
   },
   conseil: {
-    label: "Conseil en rénovation", price: "72 € / heure", url: CAL + "conseil-en-renovation-72-heure",
+    label: "Conseil en rénovation", h1: "Réservez votre conseil en rénovation", price: "72 € / heure", url: CAL + "conseil-en-renovation-72-heure",
+    lede: "Un plan d'action en 1 heure avec un ingénieur. Choisissez votre créneau.",
     note: "En 1 heure, vous repartez avec un plan d'action concret, priorisé et chiffré. Sur place ou à distance."
   },
   efficacite: {
-    label: "Consultation efficacité énergétique", price: "72 € / heure", url: CAL + "consultation-efficacite-energetique-72-heure",
+    label: "Consultation efficacité énergétique", h1: "Réservez votre consultation efficacité énergétique", price: "72 € / heure", url: CAL + "consultation-efficacite-energetique-72-heure",
+    lede: "Identifiez où part votre énergie. Choisissez votre créneau.",
     note: "Si vous avez un certificat PEB, apportez-le : l'ingénieur analyse ses indicateurs (Espec, Ew, K) pour cibler les actions utiles."
   },
   responsable: {
-    label: "Responsable PEB", price: "1 250 €", mode: "quote",
+    label: "Responsable PEB", h1: "Demandez un devis Responsable PEB", price: "1 250 €", mode: "quote",
+    lede: "Cette mission se fait sur devis.",
     note: "Cette mission dépend de votre chantier (permis d'urbanisme, seuils de surface et de travaux). Décrivez-nous votre projet : nous vérifions votre situation et vous répondons rapidement."
   }
 };
@@ -260,81 +292,82 @@ function setUrl(id, bien) {
   try { history.replaceState(null, "", "?service=" + id + (bien ? "&bien=" + bien : "")); } catch (e) {}
 }
 
-function contactPanel(s, intro) {
-  panel.innerHTML =
-    '<div class="panel-head"><h3>' + esc(s.label) + ' — ' + esc(s.price) + '</h3></div>' +
-    '<div class="panel-quote"><p>' + esc(intro) + '</p><div class="panel-actions">' +
-    '<a class="btn-gold" href="index.html?service=' + esc(current) + '#contact">Nous écrire</a>' +
-    '<a class="btn-line" href="tel:+32483548560">Appeler le +32 483 548 560</a></div></div>';
-}
-
+/* Certificat PEB : question sur le logement -> tarif -> créneau */
 function selectBien(bienId, userAction) {
-  var t = PEB_TIERS.filter(function (x) { return x.id === bienId; })[0];
+  var sv = SERVICES[current];
+  var t = sv.tiers.filter(function (x) { return x.id === bienId; })[0];
+  var box = document.getElementById("price-box");
+  var slot = document.getElementById("slot-title");
   var host = document.getElementById("widget");
-  var price = document.getElementById("bien-price");
   var empty = document.getElementById("widget-empty");
-  if (!t) { host.hidden = true; empty.hidden = false; price.innerHTML = ""; setUrl("peb"); return; }
-  price.innerHTML = esc(t.label) + " : <strong>" + esc(t.price) + "</strong>";
-  empty.hidden = true; host.hidden = false;
+  if (!t) return;
+  box.innerHTML = '<span class="pb-label">Votre tarif</span><strong>' + esc(t.price) + '</strong><span class="pb-sub">' + esc(sv.label) + ' — ' + esc(t.label) + '</span>';
+  box.hidden = false; slot.hidden = false; empty.hidden = true; host.hidden = false;
   mountWidget(t.url, host);
-  setUrl("peb", bienId);
-  track("select_tier", { service_id: "peb", tier_id: bienId });
-  if (userAction && window.innerWidth < 900) host.scrollIntoView({ behavior: "smooth", block: "start" });
+  setUrl(current, bienId);
+  track("select_tier", { service_id: current, tier_id: bienId });
+  if (userAction) {
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    box.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  }
 }
 
 function renderPeb(s) {
-  var groups = {};
-  PEB_TIERS.forEach(function (t) { (groups[t.group] = groups[t.group] || []).push(t); });
-  var opts = '<option value="">Choisissez le type et la surface…</option>';
-  Object.keys(groups).forEach(function (g) {
-    opts += '<optgroup label="' + esc(g) + '">' + groups[g].map(function (t) {
-      return '<option value="' + t.id + '">' + esc(t.label) + ' — ' + esc(t.price) + '</option>';
-    }).join("") + '</optgroup>';
-  });
+  var groups = {}, order = [];
+  s.tiers.forEach(function (t) { if (!groups[t.group]) { groups[t.group] = []; order.push(t.group); } groups[t.group].push(t); });
+  var opts = order.map(function (g) {
+    return '<h4>' + esc(g) + '</h4><div class="opts">' + groups[g].map(function (t) {
+      return '<label class="opt"><input type="radio" name="bien" value="' + t.id + '"><span>' + esc(t.label) + '</span></label>';
+    }).join("") + '</div>';
+  }).join("");
   panel.innerHTML =
     '<div class="panel-head"><h3>' + esc(s.label) + '</h3><p>' + esc(s.note) + '</p></div>' +
-    '<div class="bien"><label for="bien">Votre bien</label><select id="bien">' + opts + '</select>' +
-    '<p class="bien-price" id="bien-price" aria-live="polite"></p></div>' +
-    '<p class="panel-empty" id="widget-empty">Le prix du certificat dépend du type de bien et de sa surface. Choisissez-les pour voir les créneaux disponibles.</p>' +
+    '<div class="q"><fieldset><legend>Quel est votre type de logement ?</legend>' + opts + '</fieldset></div>' +
+    '<div class="price-box" id="price-box" hidden aria-live="polite"></div>' +
+    '<h3 class="slot-title" id="slot-title" hidden>Choisissez votre créneau</h3>' +
+    '<p class="panel-empty" id="widget-empty">Cochez votre type de logement : votre tarif s\'affiche et les créneaux disponibles apparaissent ici.</p>' +
     '<div class="widget" id="widget" hidden></div>';
-  document.getElementById("bien").addEventListener("change", function () { selectBien(this.value, true); });
+  panel.querySelectorAll('input[name="bien"]').forEach(function (r) {
+    r.addEventListener("change", function () { selectBien(r.value, true); });
+  });
 }
 
-function select(id, userAction, bienId) {
-  var s = SERVICES[id];
-  if (!s) return;
-  current = id;
-  var radio = document.querySelector('input[name="service"][value="' + id + '"]');
-  if (radio) radio.checked = true;
-  setUrl(id);
+function renderQuote(s) {
+  panel.innerHTML =
+    '<div class="price-box"><span class="pb-label">Tarif</span><strong>' + esc(s.price) + '</strong><span class="pb-sub">' + esc(s.label) + '</span></div>' +
+    '<div class="panel-quote"><p>' + esc(s.note) + '</p><div class="panel-actions">' +
+    '<a class="btn-gold" href="index.html?service=responsable#contact">Demander un devis</a>' +
+    '<a class="btn-line" href="tel:+32483548560">Appeler le +32 483 548 560</a></div></div>';
+}
 
-  if (s.mode === "quote") {
-    contactPanel(s, s.note);
-    panel.querySelector(".btn-gold").textContent = "Demander un devis";
-  } else if (s.tiers) {
+function renderSimple(s) {
+  panel.innerHTML =
+    '<div class="price-box"><span class="pb-label">Votre tarif</span><strong>' + esc(s.price.replace("à partir de ", "")) + '</strong>' +
+    '<span class="pb-sub">' + esc(s.label) + (s.price.indexOf("à partir") === 0 ? " (à partir de)" : "") + '</span></div>' +
+    '<div class="panel-head"><p>' + esc(s.note) + '</p></div>' +
+    '<h3 class="slot-title">Choisissez votre créneau</h3>' +
+    '<div class="widget" id="widget"></div>';
+  mountWidget(s.url, document.getElementById("widget"));
+}
+
+function open(id, bienId) {
+  var s = SERVICES[id];
+  current = id;
+  document.getElementById("pick").hidden = true;
+  document.getElementById("booking").hidden = false;
+  document.getElementById("h1").textContent = s.h1;
+  document.getElementById("lede").textContent = s.lede;
+  document.title = s.h1 + " | Ecowatt";
+  if (s.mode === "quote") renderQuote(s);
+  else if (s.tiers) {
     renderPeb(s);
-    if (bienId && PEB_TIERS.some(function (t) { return t.id === bienId; })) {
-      document.getElementById("bien").value = bienId;
+    if (bienId && s.tiers.some(function (t) { return t.id === bienId; })) {
+      panel.querySelector('input[name="bien"][value="' + bienId + '"]').checked = true;
       selectBien(bienId, false);
     }
-  } else if (!s.url) {
-    contactPanel(s, "La réservation en ligne de cette prestation n'est pas encore ouverte. Écrivez-nous ou appelez-nous : nous convenons ensemble d'un créneau.");
-  } else {
-    panel.innerHTML =
-      '<div class="panel-head"><h3>' + esc(s.label) + ' — ' + esc(s.price) + '</h3><p>' + esc(s.note) + '</p></div>' +
-      '<div class="widget" id="widget"></div>';
-    mountWidget(s.url, document.getElementById("widget"));
-  }
+  } else renderSimple(s);
   track("select_service", { service_id: id });
-  if (userAction) {
-    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    panel.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-  }
 }
-
-document.querySelectorAll('input[name="service"]').forEach(function (r) {
-  r.addEventListener("change", function () { select(r.value, true); });
-});
 
 // Réservation confirmée dans le widget Calendly : on la compte comme une conversion
 window.addEventListener("message", function (e) {
@@ -343,10 +376,9 @@ window.addEventListener("message", function (e) {
   }
 });
 
-// Arrivée avec un service pré-choisi (?service=peb)
 var params = new URLSearchParams(location.search);
 var wanted = params.get("service");
-if (wanted && SERVICES[wanted]) select(wanted, false, params.get("bien"));
+if (wanted && SERVICES[wanted]) open(wanted, params.get("bien"));
 </script>
 </body>
 </html>
