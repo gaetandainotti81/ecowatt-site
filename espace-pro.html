@@ -216,6 +216,7 @@
     <li><a href="index.html#services">Services</a></li>
     <li><a href="index.html#tarifs">Tarifs</a></li>
     <li><a href="blog.html">Blog</a></li>
+    <li><a href="pro.html">Professionnels</a></li>
     <li><a href="index.html#contact">Contact</a></li>
     <li data-portal hidden><a href="connexion.html">Mon espace</a></li>
     <li class="keep-mobile nav-tel"><a href="tel:+32483548560" aria-label="Appeler Ecowatt">📞 Appeler</a></li>
@@ -488,7 +489,7 @@
       function done() { P.configured = !!window.supabase; resolve(P.configured); }
       if (window.supabase) return done();
       var s = document.createElement("script");
-      s.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+      s.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4";
       s.onload = done; s.onerror = function () { resolve(false); };
       document.head.appendChild(s);
     });

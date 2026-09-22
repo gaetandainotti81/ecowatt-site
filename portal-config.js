@@ -6,8 +6,8 @@
    Voir le guide : portal/GUIDE-INSTALLATION.md
    ============================================================ */
 window.PORTAL_CONFIG = {
-  SUPABASE_URL: "",       // ex. https://abcdefghijk.supabase.co
-  SUPABASE_ANON_KEY: "",  // clé « anon / public » (elle est faite pour être publique)
+  SUPABASE_URL: "https://griblzyullbwhsyksyln.supabase.co",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdyaWJsenl1bGxid2hzeWtzeWxuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMTE3MDcsImV4cCI6MjEwNTU4NzcwN30.a9bzRLIuWOlEuCyt_WHk4OxNI0uP2ajI7en5cG_h8Z4",
   BUCKET: "portal-documents",
   ADMIN_EMAIL_HINT: "info@ecowattpeb.be"
 };
