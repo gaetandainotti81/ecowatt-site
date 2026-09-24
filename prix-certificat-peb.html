@@ -180,9 +180,9 @@
 <main>
 <section class="section tiers-sec" style="background:var(--cream)"><div class="section-inner">
   <div class="label">Grille des tarifs</div>
-  <h2>De 160 € à 450 € TTC selon votre logement</h2>
+  <h2>De <span data-price="range:peb">160 € à 450 €</span> TTC selon votre logement</h2>
   <p style="max-width:640px;font-size:.97rem;line-height:1.8;color:#374151">Cliquez sur votre type de logement : vous arrivez directement sur l'agenda correspondant, avec le tarif déjà affiché.</p>
-  <div class="tier-cols"><div><h3>Studio et appartement</h3><ul class="tiers"><li><a href="reserver.html?service=peb&amp;bien=studio-50"><span>Studio, jusqu&#x27;à 50 m²</span><b>160 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=app-51-75"><span>Appartement de 51 à 75 m²</span><b>200 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=app-76-125"><span>Appartement de 76 à 125 m²</span><b>240 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=app-126-200"><span>Appartement de 126 à 200 m²</span><b>280 €</b></a></li></ul></div><div><h3>Maison</h3><ul class="tiers"><li><a href="reserver.html?service=peb&amp;bien=mai-150"><span>Maison jusqu&#x27;à 150 m²</span><b>300 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=mai-151-250"><span>Maison de 151 à 250 m²</span><b>340 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=mai-251-350"><span>Maison de 251 à 350 m²</span><b>400 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=mai-350"><span>Maison de plus de 350 m²</span><b>450 €</b></a></li></ul></div></div>
+  <div class="tier-cols"><div><h3>Studio et appartement</h3><ul class="tiers"><li><a href="reserver.html?service=peb&amp;bien=studio-50"><span>Studio, jusqu&#x27;à 50 m²</span><b data-price="tier:peb:studio-50">160 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=app-51-75"><span>Appartement de 51 à 75 m²</span><b data-price="tier:peb:app-51-75">200 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=app-76-125"><span>Appartement de 76 à 125 m²</span><b data-price="tier:peb:app-76-125">240 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=app-126-200"><span>Appartement de 126 à 200 m²</span><b data-price="tier:peb:app-126-200">280 €</b></a></li></ul></div><div><h3>Maison</h3><ul class="tiers"><li><a href="reserver.html?service=peb&amp;bien=mai-150"><span>Maison jusqu&#x27;à 150 m²</span><b data-price="tier:peb:mai-150">300 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=mai-151-250"><span>Maison de 151 à 250 m²</span><b data-price="tier:peb:mai-151-250">340 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=mai-251-350"><span>Maison de 251 à 350 m²</span><b data-price="tier:peb:mai-251-350">400 €</b></a></li><li><a href="reserver.html?service=peb&amp;bien=mai-350"><span>Maison de plus de 350 m²</span><b data-price="tier:peb:mai-350">450 €</b></a></li></ul></div></div>
 </div></section>
 
 <section class="section"><div class="section-inner prose" style="max-width:760px">
@@ -231,6 +231,7 @@
 </footer>
 
 <script src="portal-config.js"></script>
+<script src="data.js"></script>
 <script>/* ============================================================
    ECOWATT — comportements communs à toutes les pages
    1. Bandeau de consentement + chargement de Google Analytics

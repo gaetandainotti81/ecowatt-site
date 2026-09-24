@@ -152,7 +152,7 @@
     <p>Vous vendez ou louez un bien à Morlanwelz, Carnières, Mont-Sainte-Aldegonde ou Fontaine-l'Évêque ? Le certificat PEB est obligatoire. Ecowatt est votre bureau technique local agréé par la Région wallonne.</p>
     <div class="hero-badges">
       <span class="hero-badge">✦ Agréé Région wallonne (SPW Énergie)</span>
-      <span class="hero-badge">✦ À partir de 160 € TTC</span>
+      <span class="hero-badge">✦ À partir de <span data-price="min:peb">160 €</span> TTC</span>
       <span class="hero-badge">✦ Délai 48 h garanti</span>
       <span class="hero-badge">✦ Intervention sur Morlanwelz</span>
     </div>
@@ -176,7 +176,7 @@
         <div class="info-card">
           <h3>📋 Informations pratiques</h3>
           <ul>
-            <li><strong>Prix</strong> — À partir de 160 € TTC</li>
+            <li><strong>Prix</strong> — À partir de <span data-price="min:peb">160 €</span> TTC</li>
             <li><strong>Délai</strong> — 48 h après visite</li>
             <li><strong>Validité</strong> — 10 ans</li>
             <li><strong>Déplacement</strong> — Inclus</li>
@@ -211,13 +211,13 @@
         <div class="service-icon">🏠</div>
         <h3>Certificat PEB</h3>
         <p>Obligatoire pour toute vente ou location. Réalisé par un ingénieur thermicien agréé.</p>
-        <div class="service-price">À partir de 160 € TTC</div>
+        <div class="service-price">À partir de <span data-price="min:peb">160 €</span> TTC</div>
       </div>
       <div class="service-item">
         <div class="service-icon">🔍</div>
         <h3>Audit logement (PAE)</h3>
         <p>Un plan de rénovation priorisé et chiffré, requis pour le Rénopack et le Rénoprêt dès le 1er octobre 2026.</p>
-        <div class="service-price">À partir de 900 € TTC</div>
+        <div class="service-price">À partir de <span data-price="min:pae">900 €</span> TTC</div>
       </div>
       <div class="service-item">
         <div class="service-icon">🔧</div>
@@ -279,6 +279,7 @@ function toggleFaq(el) {
 }
 </script>
 <script src="portal-config.js"></script>
+<script src="data.js"></script>
 <script>/* ============================================================
    ECOWATT — comportements communs à toutes les pages
    1. Bandeau de consentement + chargement de Google Analytics
